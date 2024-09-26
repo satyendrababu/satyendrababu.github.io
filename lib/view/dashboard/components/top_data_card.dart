@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
+import 'package:simple_ehr/view/dashboard/components/line_chart_widget.dart';
 
+import '../../../data/local/line_data.dart';
+import '../../../data/local/line_data.dart';
 import '../../base/custom_box_shadow.dart';
 
 class TopDataCard extends StatelessWidget{
@@ -28,21 +31,35 @@ class TopDataCard extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: TextStyle(
-                color: textColor,
-                fontWeight: interRegular.fontWeight,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 28,
-                color: textColor,
-                fontWeight: interSemiBold.fontWeight,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        color: textColor,
+                        fontWeight: interRegular.fontWeight,
+                      ),
+                    ),
+                    Text(
+                      value,
+                      style: TextStyle(
+                        fontSize: 28,
+                        color: textColor,
+                        fontWeight: interSemiBold.fontWeight,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 80,
+                  height: 60,
+                  child: LineChartWidget(chartColor: trendColor, chartData: LineData()),
+                )
+              ],
             ),
             const SizedBox(height: 8),
             Text(

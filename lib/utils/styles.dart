@@ -6,7 +6,7 @@ const interRegular = TextStyle(
   fontFamily: 'Inter',
   fontSize: Dimensions.fontSizeDefault,
   fontWeight: FontWeight.w400,
-
+    color: Color(0XFF6B7280)
 );
 const interMediumBlue = TextStyle(
     fontFamily: 'Inter',
@@ -23,7 +23,7 @@ const textHintStyle = TextStyle(
 const interMedium = TextStyle(
   fontFamily: 'Inter',
   fontWeight: FontWeight.w500,
-
+    color: Colors.white
 );
 const interMediumDefault = TextStyle(
     fontFamily: 'Inter',
@@ -41,6 +41,7 @@ const interBold = TextStyle(
 const interSemiBold = TextStyle(
   fontFamily: 'Inter',
   fontWeight: FontWeight.w600,
+    color: Color(0XFF374151)
 );
 
 const interSemiBoldBlack = TextStyle(
@@ -60,4 +61,11 @@ const interItalic = TextStyle(
   fontFamily: 'Inter',
   fontSize: Dimensions.fontSizeDefault,
   fontWeight: FontWeight.w500,
+);
+
+const interMediumBlack = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: Dimensions.fontSizeLarge,
+    fontWeight: FontWeight.w500,
+    color: Color(0XFF1C2A3A)
 );

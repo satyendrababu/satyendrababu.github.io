@@ -10,5 +10,8 @@ class IconsM {
   static const String search = 'assets/icons/search.svg';
   static const String simpleEhrLogo = 'assets/icons/simple_ehr_logo.svg';
   static const String notification = 'assets/icons/notification.svg';
+  static const String bigLogo = 'assets/icons/big_logo.svg';
+  static const String email = 'assets/icons/sms.svg';
+  static const String lock = 'assets/icons/lock.svg';
 
 }

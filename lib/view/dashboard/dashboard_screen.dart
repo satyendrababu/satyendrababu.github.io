@@ -1,11 +1,15 @@
+
 import 'package:flutter/material.dart';
+import 'package:simple_ehr/data/local/pie_data.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/base/custom_box_shadow.dart';
-import 'package:simple_ehr/view/dashboard/components/patient_bar_chart.dart';
+import 'package:simple_ehr/view/dashboard/components/bar_chart_widget.dart';
+import 'package:simple_ehr/view/dashboard/components/donut_chart_widget.dart';
+import 'package:simple_ehr/view/dashboard/components/pie_chart_widget.dart';
 import 'package:simple_ehr/view/dashboard/components/top_data_card.dart';
-import 'package:simple_ehr/view/dashboard/components/top_data_widget.dart';
 
+import '../../data/local/bar_data.dart';
 import 'components/patient_request_card.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -37,13 +41,13 @@ class DashboardScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TopDataCard(title: 'Positive Response', value: '200', percentage: '+2,5%', trendColor: Colors.green),
+              TopDataCard(title: 'Positive Response', value: '200', percentage: '+2,5%', trendColor: greenColor),
 
-              TopDataCard(title: 'Pending Reports', value: '872', percentage: '-4,4%', trendColor: Colors.red),
+              TopDataCard(title: 'Pending Reports', value: '872', percentage: '-4,4%', trendColor: redColor),
 
-              TopDataCard(title: 'New Patients', value: '475', percentage: '+2,5%', trendColor: Colors.blue),
+              TopDataCard(title: 'New Patients', value: '475', percentage: '+2,5%', trendColor: blueColor),
 
-              TopDataCard(title: 'Positive Cases', value: '200', percentage: '+2,5%', trendColor: Colors.orange),
+              TopDataCard(title: 'Positive Cases', value: '200', percentage: '+2,5%', trendColor: orangeColor),
 
             ],
           ),
@@ -120,10 +124,11 @@ class DashboardScreen extends StatelessWidget {
                             SizedBox()
                           ],
                         ),
-
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 16),
                         Container(
-                          height: 150,
+                          height: 200,
+
+                            child: BarChartWidget(chartColor: barColor, chartData: BarData()),
                             //child: PatientBarChart.withSampleData()// Bar chart height
                           /*child: BarChart(
                             // Replace with actual data
@@ -175,6 +180,7 @@ class DashboardScreen extends StatelessWidget {
                         const SizedBox(height: 20),
                         Container(
                           height: 220,
+                          child: PieChartWidget(),
                           // Pie chart height
                           /*child: PieChart(
                             // Replace with actual data
