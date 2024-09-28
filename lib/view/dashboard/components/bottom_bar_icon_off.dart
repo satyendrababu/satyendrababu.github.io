@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+class BottomBarIconOff extends StatelessWidget {
+
+  BottomBarIconOff({super.key, required this.svgIcon});
+
+  final String svgIcon;
+  //final double size;
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+        svgIcon,
+        height: 20,
+    );
+  }
+
+}

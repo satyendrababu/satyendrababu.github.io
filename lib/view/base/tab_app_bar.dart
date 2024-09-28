@@ -7,9 +7,9 @@ import '../../utils/constant.dart';
 import '../../utils/styles.dart';
 import 'custom_box_shadow.dart';
 
-class WebAppBar extends StatelessWidget {
+class TabAppBar extends StatelessWidget {
 
-  WebAppBar({super.key});
+  TabAppBar({super.key});
 
 
 
@@ -42,46 +42,17 @@ class WebAppBar extends StatelessWidget {
                       ),
 
                       Center(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 58,
-                            width: 700,
-                            color: Colors.white,
-                            padding: const EdgeInsets.symmetric(horizontal: defaultPadding, vertical: 5),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFFF3F4F6),
-                                  borderRadius: BorderRadius.circular(8)
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-                                    child: SvgIcon(svgIcon: IconsM.search),
-
-                                  ),
-                                  Expanded(
-                                      child:
-                                      Text(
-                                        'Search doctor...',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                            fontWeight: interRegular.fontWeight,
-                                            color: const Color(0xFF9CA3AF),
-                                            fontSize: 14
-                                        ),
-                                      )
-                                  )
-                                ],
-                              ),
-                            ),
-
+                        child: Text(
+                          'Home',
+                          style: TextStyle(
+                            fontWeight: interMedium.fontWeight,
+                            color: textColor,
+                            fontSize: 24
                           ),
                         ),
                       ),
                       Row(
+
                         children: [
                           InkWell(
                             onTap: () {},
@@ -106,6 +77,14 @@ class WebAppBar extends StatelessWidget {
                                   'https://s3-alpha-sig.figma.com/img/ab2f/238c/ac2c180c370d6398ba04e784c6dc5cb3?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PACHJnkMKosZqdz1qvf2nlROtFmZoVnpVRnmXB4XOq-4vnR72namjBn833o7rnJe2WRCvEEk7pdCX54Odec5jZ-r21FAUwTyRD30HutsCtSS6XsEc~YJ0To~rJxwM~XCjAHw6oMzuMYfatXh-bnB3eG~2FM1ypay~7~SgeQ39x8PO34LTtbvSUNvyZHH2nRu2PFiFRa2SnWv4ycd2Zo7y3nV-iZydKqGAF2EnvLmltq2T0RQcHLkfJLe2wIJyt0ocBnIsFzzcM92ayg1u8HLXLas2E7U5l6gUMCJqz7AH3aQMB9yFaAbta3n1QYRBDAdkYQOTp4nCsM-Wwe1PJ8s2A__'), // Replace with your image URL or asset
                             ),
                           ),
+                          InkWell(
+                            onTap: () {},
+                            child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 8),
+                              child: SvgIcon(svgIcon: IconsM.arrowDownBlue),
+                            ),
+                          ),
+                          SizedBox(width: 16),
                         ],
                       )
 

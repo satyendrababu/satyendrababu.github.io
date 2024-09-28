@@ -15,10 +15,10 @@ class SvgSuffixIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(
-            Dimensions.paddingSizeLarge,
             Dimensions.paddingSizeSmall,
-            Dimensions.paddingSizeSmall,
-            Dimensions.paddingSizeSmall
+            Dimensions.paddingSizeExtraSmall,
+            Dimensions.paddingSizeExtraSmall,
+            Dimensions.paddingSizeExtraSmall
         ),
       child: SvgPicture.asset(
           svgIcon,

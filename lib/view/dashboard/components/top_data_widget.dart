@@ -18,6 +18,7 @@ class TopDataWidget extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 4, crossAxisSpacing: 15, mainAxisSpacing: 12),
         itemBuilder: (context, index) => CustomCardWidget(
+              color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +49,6 @@ class TopDataWidget extends StatelessWidget {
                   )
                 ],
               ),
-          color: Colors.white,
             ));
   }
 }

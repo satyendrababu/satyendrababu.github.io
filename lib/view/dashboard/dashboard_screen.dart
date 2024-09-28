@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:simple_ehr/data/local/pie_data.dart';
+import 'package:simple_ehr/helper/responsive_helper.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/base/custom_box_shadow.dart';
 import 'package:simple_ehr/view/dashboard/components/bar_chart_widget.dart';
-import 'package:simple_ehr/view/dashboard/components/donut_chart_widget.dart';
 import 'package:simple_ehr/view/dashboard/components/pie_chart_widget.dart';
 import 'package:simple_ehr/view/dashboard/components/top_data_card.dart';
 
@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: ResponsiveHelper.isDesktop(context) ? EdgeInsets.fromLTRB(0,16,16,16) : EdgeInsets.fromLTRB(8,16,16,16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -126,7 +126,7 @@ class DashboardScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         Container(
-                          height: 200,
+                          height: 235,
 
                             child: BarChartWidget(chartColor: barColor, chartData: BarData()),
                             //child: PatientBarChart.withSampleData()// Bar chart height
@@ -177,9 +177,10 @@ class DashboardScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         //const Text('+0.4% Than last week'),
-                        const SizedBox(height: 20),
+
                         Container(
-                          height: 220,
+                          height: 320,
+
                           child: PieChartWidget(),
                           // Pie chart height
                           /*child: PieChart(

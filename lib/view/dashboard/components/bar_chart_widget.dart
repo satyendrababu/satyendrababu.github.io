@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_ehr/helper/responsive_helper.dart';
 import 'package:simple_ehr/model/graph_model.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
@@ -105,7 +106,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
         barRods: [
           BarChartRodData(
             toY: point.y,
-            width: 55,
+            width: ResponsiveHelper.isDesktop(context) ? 55 : 35,
             color: touchedIndex == point.x.toInt()
                 ? blueColor // Change color on hover or click
                 : color, // Default color

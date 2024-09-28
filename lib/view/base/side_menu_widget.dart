@@ -1,14 +1,21 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_ehr/data/local/side_menu_data.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/utils/styles.dart';
+import 'package:simple_ehr/view/patients/patients_screen.dart';
 import 'package:simple_ehr/widget/svg_icon.dart';
 
 import '../../utils/constant.dart';
 
+typedef PageIndexCallback = void Function(int pageIndex);
+
 class SideMenuWidget extends StatefulWidget {
-  SideMenuWidget({super.key});
+
+  final PageIndexCallback onPageIndexChanged;
+  SideMenuWidget({super.key, required this.onPageIndexChanged});
 
 
 
@@ -17,14 +24,21 @@ class SideMenuWidget extends StatefulWidget {
 }
 
 class _SideMenuWidgetState extends State<SideMenuWidget> {
+
   int selectedIndex = 0;
 
+  void _onItemTapped(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    widget.onPageIndexChanged(index);
+  }
 
   @override
   Widget build(BuildContext context) {
     final data = SideMenuData();
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.fromLTRB(16,16,8,16),
       child: Card(
         color: Colors.white,
         elevation: 2,
@@ -63,11 +77,15 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
         ),
         child: InkWell(
           onTap: () => setState(() {
-            if(data.menu[index].title == ''){
+            print("Selected Index: $selectedIndex");
+            _onItemTapped(index);
+            /*if(data.menu[index].title == ''){
 
             }else {
-              selectedIndex = index;
-            }
+              //selectedIndex = index;
+
+            }*/
+
           }),
           child: Row(
             children: [

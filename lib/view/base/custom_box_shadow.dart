@@ -22,6 +22,18 @@ class CustomBoxShadow {
     ];
   }
 
+  static List<BoxShadow> getTextFieldShadow(Color primaryColor) {
+    return [
+      BoxShadow(
+        color: primaryColor.withOpacity(0.1),
+        blurRadius: 20,
+        offset: const Offset(0, 0),  // Bottom shadow
+      ),
+
+
+    ];
+  }
+
   static List<BoxShadow> getAppBarShadow(Color primaryColor) {
     return [
       BoxShadow(
