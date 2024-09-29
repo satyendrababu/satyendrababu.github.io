@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:simple_ehr/helper/responsive_helper.dart';
+import 'package:simple_ehr/helper/router_helper.dart';
 import 'package:simple_ehr/view/base/side_menu_widget.dart';
 import 'package:simple_ehr/view/base/web_app_bar.dart';
 import 'package:simple_ehr/view/dashboard/components/custom_bottom_navigation_bar.dart';
@@ -8,9 +10,12 @@ import 'package:simple_ehr/view/sign_in/login_screen.dart';
 
 import 'base/tab_app_bar.dart';
 import 'dashboard/components/top_data_widget.dart';
+import 'patients/new_patient_enrollment.dart';
 import 'patients/patients_screen.dart';
 
 class MainScreen extends StatefulWidget {
+
+
 
   const MainScreen({super.key});
 
@@ -66,7 +71,7 @@ class _MainScreenState extends State<MainScreen> {
               Expanded(
                   flex: 8,
                   child: _getPage(currentPageIndex), // Dynamically show the selected screen
-                  //child: TopDataWidget()
+                  //child: widget.child
               ),
 
             ],
@@ -74,7 +79,27 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
+  void _onPageIndexChanged(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+    switch (index) {
+      case 0:
+        context.go('/dashboard');
+        break;
+      case 1:
+        context.go('/patients');
+        break;
+      case 2:
+        context.go('/todo');
+        break;
+      case 3:
+        context.go('/my_notes');
+        break;
+      default:
+        break;
+    }
+  }
   Widget _getPage(int index) {
     switch (index) {
       case 0:
@@ -82,7 +107,7 @@ class _MainScreenState extends State<MainScreen> {
       case 1:
         return PatientsScreen();
       case 2:
-        return Container();
+        return NewPatientEnrollment();
       case 3:
         return Container();
       default:

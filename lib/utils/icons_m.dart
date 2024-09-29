@@ -13,9 +13,12 @@ class IconsM {
   static const String bigLogo = 'assets/icons/big_logo.svg';
   static const String email = 'assets/icons/sms.svg';
   static const String lock = 'assets/icons/lock.svg';
+  static const String location = 'assets/icons/location.svg';
   static const String searchGrey = 'assets/icons/search_grey.svg';
   static const String mic = 'assets/icons/mic.svg';
   static const String addRing = 'assets/icons/add_ring.svg';
   static const String arrowDownBlue = 'assets/icons/arrow_down_blue.svg';
+  static const String photoPlaceHolder = 'assets/icons/photo_place_holder.svg';
+  static const String camera = 'assets/icons/camera.svg';
 
 }

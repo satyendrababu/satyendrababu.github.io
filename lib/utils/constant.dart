@@ -13,6 +13,7 @@ const textColor = Color(0xFF464255);
 const textBlueColor = Color(0xFF2C67F2);
 const patientCountColor = Color(0xFF00A389);
 const lightGreyColor = Color(0xFFA3A3A3);
+const nameBlackColor = Color(0xFF1F2A37);
 
 
 const greenColor = Color(0xFF00A389);
