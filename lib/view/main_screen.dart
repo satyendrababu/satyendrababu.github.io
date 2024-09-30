@@ -6,6 +6,7 @@ import 'package:simple_ehr/view/base/side_menu_widget.dart';
 import 'package:simple_ehr/view/base/web_app_bar.dart';
 import 'package:simple_ehr/view/dashboard/components/custom_bottom_navigation_bar.dart';
 import 'package:simple_ehr/view/dashboard/dashboard_screen.dart';
+import 'package:simple_ehr/view/patients/patient_details_screen.dart';
 import 'package:simple_ehr/view/sign_in/login_screen.dart';
 
 import 'base/tab_app_bar.dart';
@@ -69,7 +70,7 @@ class _MainScreenState extends State<MainScreen> {
                   )
               ),
               Expanded(
-                  flex: 8,
+                  flex: 9,
                   child: _getPage(currentPageIndex), // Dynamically show the selected screen
                   //child: widget.child
               ),
@@ -109,7 +110,7 @@ class _MainScreenState extends State<MainScreen> {
       case 2:
         return NewPatientEnrollment();
       case 3:
-        return Container();
+        return PatientDetailsScreen();
       default:
         return Container();
     }

@@ -7,6 +7,7 @@ const secondaryColor = Color(0xFFFFFFFF);
 const backgroundColor = Color(0xFF15131C);
 const selectionColor = Color(0x0F4285F4);
 const defaultColor = Color(0xFFB1B1B1);
+const iconColor = Color(0xFF858585);
 const mainBackgroundColor = Color(0xFFF5F5F5);
 const textHeadingColor = Color(0xFF141F39);
 const textColor = Color(0xFF464255);
@@ -14,6 +15,9 @@ const textBlueColor = Color(0xFF2C67F2);
 const patientCountColor = Color(0xFF00A389);
 const lightGreyColor = Color(0xFFA3A3A3);
 const nameBlackColor = Color(0xFF1F2A37);
+const startColor = Color(0xFF3E64FF);
+const endColor = Color(0xFF4285F4);
+const textBlackColor = Color(0xFF1C2A3A);
 
 
 const greenColor = Color(0xFF00A389);

@@ -90,7 +90,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget> {
           child: Row(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 13.0, vertical: 7),
+                padding: const EdgeInsets.fromLTRB(13.0,7,4,7),
                 child: SvgPicture.asset(
                     data.menu[index].icon,
                   colorFilter: ColorFilter.mode(isSelected ? primaryColor : defaultColor, BlendMode.srcIn),

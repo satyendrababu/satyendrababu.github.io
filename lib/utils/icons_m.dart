@@ -20,5 +20,12 @@ class IconsM {
   static const String arrowDownBlue = 'assets/icons/arrow_down_blue.svg';
   static const String photoPlaceHolder = 'assets/icons/photo_place_holder.svg';
   static const String camera = 'assets/icons/camera.svg';
+  static const String close = 'assets/icons/close_ring.svg';
+  static const String info = 'assets/icons/info.svg';
+  static const String stethoscope = 'assets/icons/stethoscope.svg';
+  static const String order = 'assets/icons/order.svg';
+  static const String pil = 'assets/icons/pil.svg';
+  static const String temperature = 'assets/icons/temperature.svg';
+  static const String history = 'assets/icons/history.svg';
 
 }

@@ -14,4 +14,17 @@ class SideMenuData {
     MenuModel(icon: '', title: ''),
     MenuModel(icon: '', title: ''),*/
   ];
+
+  final sideMenuData = const <MenuModel>[
+    MenuModel(icon: IconsM.info, title: 'Information'),
+    MenuModel(icon: IconsM.history, title: 'History'),
+    MenuModel(icon: IconsM.temperature, title: 'Results'),
+    MenuModel(icon: IconsM.pil, title: 'Medication'),
+    MenuModel(icon: IconsM.myNote, title: 'Notes'),
+    MenuModel(icon: IconsM.order, title: 'Order'),
+    MenuModel(icon: IconsM.stethoscope, title: 'Communicate'),
+    /*MenuModel(icon: '', title: ''),
+    MenuModel(icon: '', title: ''),
+    MenuModel(icon: '', title: ''),*/
+  ];
 }
