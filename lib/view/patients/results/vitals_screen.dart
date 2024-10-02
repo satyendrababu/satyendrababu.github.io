@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simple_ehr/view/patients/information/add_admission_info_dialog.dart';
+import 'package:simple_ehr/utils/images.dart';
+import 'package:simple_ehr/view/patients/results/add_new_vitals_dialog.dart';
 
 import '../../../utils/constant.dart';
 import '../../../utils/icons_m.dart';
@@ -7,19 +8,23 @@ import '../../../utils/styles.dart';
 import '../../../widget/svg_icon.dart';
 import '../../../widget/svg_suffix_icon.dart';
 import '../../base/custom_box_shadow.dart';
+import '../information/add_admission_info_dialog.dart';
 
-class AdmissionInformation extends StatefulWidget {
+class VitalsScreen extends StatefulWidget {
+
+
   @override
-  State<AdmissionInformation> createState() => _AdmissionInformationState();
+  State<VitalsScreen> createState() => _VitalsScreenState();
 }
 
-class _AdmissionInformationState extends State<AdmissionInformation> {
+class _VitalsScreenState extends State<VitalsScreen> {
+
   final _formKey = GlobalKey<FormState>();
   final List<String> admissionData = [
-    '09-12-2016 Admission Information',
-    '09-12-2015 Admission Information',
-    '09-12-2014 Admission Information',
-    '09-12-2013 Admission Information',
+    '09-12-2016  Admission Information',
+    '09-12-2015  Admission Information',
+    '09-12-2014  Admission Information',
+    '09-12-2013  Admission Information',
   ];
 
   @override
@@ -43,13 +48,13 @@ class _AdmissionInformationState extends State<AdmissionInformation> {
                   onPressed: () {
                     // Add new information action
                     showDialog(context: context,
-                        builder: (context) => AddAdmissionInfoDialog()
+                        builder: (context) => AddNewVitalsDialog()
                     );
 
                   },
                   icon: SvgIcon(svgIcon: IconsM.addRing),
                   label: Text(
-                    "New Information",
+                    "New Vitals",
                     style: TextStyle(
                         fontWeight: interMedium.fontWeight,
                         fontSize: 20,
@@ -86,7 +91,32 @@ class _AdmissionInformationState extends State<AdmissionInformation> {
                             children: [
                               Text(
                                 admissionData[index],
-                                style: interMedium.copyWith(color: textColor, fontSize: 16),
+                                style: interSemiBold.copyWith(color: textColor, fontSize: 16),
+                              ),
+                              SizedBox(width: 24),
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4), // Add padding
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      startColor,   // Gradient start color
+                                      endColor,  // Gradient end color
+                                    ],
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                  ),
+                                  borderRadius: BorderRadius.circular(20), // Rounded shape for the chip
+                                ),
+                                child: Row(
+                                  children: [
+                                    Image.asset(Images.emoji),
+                                    SizedBox(width: 8), // Space between icon and text
+                                    Text(
+                                      'No Pain',
+                                      style: interMedium.copyWith(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
                               ),
                               const Spacer(),
                               SvgIcon(svgIcon: IconsM.arrowDown),
@@ -145,7 +175,7 @@ class _AdmissionInformationState extends State<AdmissionInformation> {
           hintText: "Search Date...",
           hintStyle: textHintStyle,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+          const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
           border: buildOutlineInputBorder(Colors.transparent),
           // Default border (no border)
           focusedBorder: buildOutlineInputBorder(Colors.blue),
@@ -164,4 +194,7 @@ class _AdmissionInformationState extends State<AdmissionInformation> {
       ),
     );
   }
+
+
+
 }

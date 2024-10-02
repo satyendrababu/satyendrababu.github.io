@@ -6,6 +6,7 @@ import 'package:simple_ehr/view/base/side_menu_widget.dart';
 import 'package:simple_ehr/view/base/web_app_bar.dart';
 import 'package:simple_ehr/view/dashboard/components/custom_bottom_navigation_bar.dart';
 import 'package:simple_ehr/view/dashboard/dashboard_screen.dart';
+import 'package:simple_ehr/view/patients/information/add_admission_info_dialog.dart';
 import 'package:simple_ehr/view/patients/patient_details_screen.dart';
 import 'package:simple_ehr/view/sign_in/login_screen.dart';
 

@@ -33,7 +33,7 @@ class _PatientDetailsSideMenuWidgetState extends State<PatientDetailsSideMenuWid
     final data = SideMenuData();
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(

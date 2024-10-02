@@ -31,7 +31,7 @@ class PieChartWidget extends StatelessWidget {
                       borderData: FlBorderData(show: false)
                     )
                 ),
-                Positioned(
+                /*Positioned(
                   top: 20,
                   left: 10,
                   child: SvgPicture.asset(
@@ -68,7 +68,7 @@ class PieChartWidget extends StatelessWidget {
                       SvgPicture.asset(Images.lineBlue), // Add your middle content
                     ],
                   ),
-                ),
+                ),*/
               ],
             ),
           ),

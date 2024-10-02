@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:simple_ehr/utils/constant.dart';
-import 'package:simple_ehr/utils/styles.dart';
-import 'package:simple_ehr/view/patients/information/admission_information.dart';
-import 'package:simple_ehr/view/patients/information/general_information.dart';
-import 'package:simple_ehr/view/patients/new_patient_enrollment.dart';
+import 'package:simple_ehr/view/patients/results/vitals_screen.dart';
 
-class InformationScreen extends StatefulWidget {
-  const InformationScreen({super.key});
+import '../../../utils/constant.dart';
+import '../../../utils/styles.dart';
+import '../information/admission_information.dart';
+import '../information/general_information.dart';
+import '../new_patient_enrollment.dart';
+
+class ResultsScreen extends StatefulWidget {
 
   @override
-  State<InformationScreen> createState() => _InformationScreenState();
+  State<ResultsScreen> createState() => _ResultsScreenState();
 }
 
-class _InformationScreenState extends State<InformationScreen> with TickerProviderStateMixin {
-
-
+class _ResultsScreenState extends State<ResultsScreen> with TickerProviderStateMixin {
   late TabController tabController;
+
   @override
   void initState() {
     super.initState();
@@ -49,7 +49,7 @@ class _InformationScreenState extends State<InformationScreen> with TickerProvid
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16),
                           child: Text(
-                              'General Information',
+                            'Vitals',
                             style: interMedium.copyWith(color: tabController.index == 0 ? textBlueColor : textBlackColor, fontSize: 16),
                           ),
                         ),
@@ -106,11 +106,12 @@ class _InformationScreenState extends State<InformationScreen> with TickerProvid
 
               ]
           ),
+          SizedBox(height: 16,),
           Expanded(
               child: TabBarView(
-                controller: tabController,
+                  controller: tabController,
                   children: [
-                    GeneralInformation(),
+                    VitalsScreen(),
                     AdmissionInformation(),
                     NewPatientEnrollment(),
                     Container(

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:simple_ehr/view/patients/components/patient_details_app_bar.dart';
 import 'package:simple_ehr/view/patients/components/patient_details_side_menu_widget.dart';
+import 'package:simple_ehr/view/patients/history/history_screen.dart';
 import 'package:simple_ehr/view/patients/information/information_screen.dart';
 import 'package:simple_ehr/view/patients/patients_screen.dart';
+import 'package:simple_ehr/view/patients/results/results_screen.dart';
 
 import '../../helper/responsive_helper.dart';
 import '../base/side_menu_widget.dart';
@@ -63,9 +65,9 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
       case 0:
         return InformationScreen();
       case 1:
-        return PatientsScreen();
+        return HistoryScreen();
       case 2:
-        return NewPatientEnrollment();
+        return ResultsScreen();
       case 3:
         return Container();
       default:

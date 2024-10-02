@@ -27,5 +27,7 @@ class IconsM {
   static const String pil = 'assets/icons/pil.svg';
   static const String temperature = 'assets/icons/temperature.svg';
   static const String history = 'assets/icons/history.svg';
+  static const String arrowDown = 'assets/icons/arrow_down.svg';
+  static const String crossClose = 'assets/icons/close.svg';
 
 }
