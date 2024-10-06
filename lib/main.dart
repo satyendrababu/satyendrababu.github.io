@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_ehr/helper/router_helper.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/view/main_screen.dart';
+import 'package:simple_ehr/view/page_index_provider.dart';
 import 'package:simple_ehr/view/splash/splash_screen.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => PageIndexProvider())
+        ],
+        child: MyApp(),
+      ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +26,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routeInformationParser: RouterHelper().router.routeInformationParser,
-      routeInformationProvider: RouterHelper().router.routeInformationProvider,
-      routerDelegate: RouterHelper().router.routerDelegate,
+      routerConfig: RouterHelper.goRoutes,
+     /* routeInformationParser: RouterHelper.goRoutes.routeInformationParser,
+      routeInformationProvider: RouterHelper.goRoutes.routeInformationProvider,
+      routerDelegate: RouterHelper.goRoutes.routerDelegate,*/
       title: 'Dashboard UI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -28,5 +40,10 @@ class MyApp extends StatelessWidget {
       //home: const SplashScreen(),
     );
   }
+}
+
+class Get {
+  static BuildContext? get context => navigatorKey.currentContext;
+  static NavigatorState? get navigator => navigatorKey.currentState;
 }
 

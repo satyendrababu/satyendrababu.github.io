@@ -29,5 +29,6 @@ class IconsM {
   static const String history = 'assets/icons/history.svg';
   static const String arrowDown = 'assets/icons/arrow_down.svg';
   static const String crossClose = 'assets/icons/close.svg';
+  static const String edit = 'assets/icons/edit.svg';
 
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:simple_ehr/helper/router_helper.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/patients/components/patient.dart';
@@ -28,7 +29,7 @@ class PatientCard extends StatelessWidget {
           
           child: InkWell(
             onTap: () {
-
+              RouterHelper.getPatientDetailsRoute();
             },
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_ehr/view/patients/results/lab_test_screen.dart';
 import 'package:simple_ehr/view/patients/results/vitals_screen.dart';
 
 import '../../../utils/constant.dart';
@@ -19,7 +20,7 @@ class _ResultsScreenState extends State<ResultsScreen> with TickerProviderStateM
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 4, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
     tabController.addListener(() {
       setState(() {}); // Rebuild the widget when the tab index changes
     });
@@ -64,7 +65,7 @@ class _ResultsScreenState extends State<ResultsScreen> with TickerProviderStateM
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16),
                           child: Text(
-                            'Admission Information',
+                            'Lab Tests',
                             style: interMedium.copyWith(color: tabController.index == 1 ? textBlueColor : textBlackColor, fontSize: 16),
                           ),
                         ),
@@ -73,36 +74,7 @@ class _ResultsScreenState extends State<ResultsScreen> with TickerProviderStateM
                         )
                     )
                 ),
-                Tab(
-                    child: Card(
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16),
-                          child: Text(
-                            'Emergency Contact',
-                            style: interMedium.copyWith(color: tabController.index == 2 ? textBlueColor : textBlackColor, fontSize: 16),
-                          ),
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
-                        )
-                    )
-                ),
-                Tab(
-                    child: Card(
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 16),
-                          child: Text(
-                            'Primary Care & Referring Physician',
-                            style: interMedium.copyWith(color: tabController.index == 3 ? textBlueColor : textBlackColor, fontSize: 16),
-                          ),
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
-                        )
-                    )
-                ),
+
 
               ]
           ),
@@ -112,11 +84,7 @@ class _ResultsScreenState extends State<ResultsScreen> with TickerProviderStateM
                   controller: tabController,
                   children: [
                     VitalsScreen(),
-                    AdmissionInformation(),
-                    NewPatientEnrollment(),
-                    Container(
-                      child: Text('history'),
-                    )
+                    LabTestScreen(),
                   ]
               )
           )

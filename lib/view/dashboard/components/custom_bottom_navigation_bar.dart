@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_ehr/utils/app_context_extension.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/widget/bottom_bar_icon.dart';
+
+import '../../page_index_provider.dart';
 
 typedef PageIndexCallback = void Function(int pageIndex);
 
@@ -22,6 +25,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    final pageIndexNotifier = Provider.of<PageIndexProvider>(context);
+    pageIndex = pageIndexNotifier.currentIndex;
 
     return BottomNavigationBar(
       items: [
@@ -46,8 +51,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       onTap: _onItemTapped,
       type: BottomNavigationBarType.fixed,
       backgroundColor: Colors.white,
-      selectedLabelStyle: const TextStyle(color: textBlueColor),
-      unselectedLabelStyle: const TextStyle(color: textColor),
+      selectedItemColor: textBlueColor,
+      unselectedItemColor: textColor,
+
 
     );
 
