@@ -21,9 +21,12 @@ const textBlackColor = Color(0xFF1C2A3A);
 
 
 const greenColor = Color(0xFF00A389);
+const greenColorOpec = Color(0x2600A389);
 const redColor = Color(0xFFFF5B5B);
+const redColorOpec = Color(0x26FF5B5B);
 const blueColor = Color(0xFF2C67F2);
 const orangeColor = Color(0xFFFEB052);
+const orangeColorOpec = Color(0x26FFBB54);
 const lightYellowColor = Color(0xFFF1E6B9);
 const lightRedColor = Color(0xFFEF9A91);
 const barColor = Color(0x26AB54DB);

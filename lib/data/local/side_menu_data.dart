@@ -27,4 +27,12 @@ class SideMenuData {
     MenuModel(icon: '', title: ''),
     MenuModel(icon: '', title: ''),*/
   ];
+
+  final toDoMenuData = const <MenuModel>[
+    MenuModel(icon: IconsM.lowTag, title: 'Low'),
+    MenuModel(icon: IconsM.importantTag, title: 'Important'),
+    MenuModel(icon: IconsM.highTag, title: 'High'),
+    MenuModel(icon: IconsM.addRingGrey, title: 'Add label'),
+
+  ];
 }

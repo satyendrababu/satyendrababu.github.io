@@ -3,6 +3,7 @@ import 'package:simple_ehr/utils/app_context_extension.dart';
 
 
 import '../../../data/remote/response/status.dart';
+import '../../../helper/router_helper.dart';
 import '../../../utils/constant.dart';
 import '../../../utils/dialogs.dart';
 import '../../../utils/dimensions.dart';
@@ -111,8 +112,7 @@ class _SignInFormState extends State<SignInForm> {
                         isLoading = true;
                       });
                       //viewModel.login(email!, password!);
-
-                      //Navigator.pushNamed(context, HomeScreen.id);
+                      RouterHelper.getMainRoute(action: RouteAction.pushNamedAndRemoveUntil);
                     }
                     Dialogs.showSnackBar(context, errors[0]!);
                   }

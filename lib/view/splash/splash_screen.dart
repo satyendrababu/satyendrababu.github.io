@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_ehr/helper/router_helper.dart';
+import 'package:simple_ehr/utils/images.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/sign_in/login_screen.dart';
 
@@ -23,6 +23,16 @@ class _SplashScreenState extends State<SplashScreen> {
   final GlobalKey<ScaffoldMessengerState> _globalKey = GlobalKey();
   late StreamSubscription<ConnectivityResult> _onConnectivityChanged;
 
+  int currentImageIndex = 0;
+  List<String> images = [
+    Images.splash_1,
+    Images.splash_2,
+    Images.splash_3,
+    Images.splash_4,
+    Images.splash_5,
+    Images.splash_6,
+    Images.splash_7,
+  ];
 
   @override
   void initState() {
@@ -48,14 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
       }
       firstTime = false;
     });
-    /*SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(
 
-          statusBarColor: Colors.transparent,
-          statusBarIconBrightness: Brightness.dark,
-        )
-    );*/
     //SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -65,8 +68,15 @@ class _SplashScreenState extends State<SplashScreen> {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      setState(() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+      });
+    });
+    if(currentImageIndex == 6) {
+      _navigateToHome();
+    }
 
-    _navigateToHome();
   }
 
 
@@ -74,22 +84,13 @@ class _SplashScreenState extends State<SplashScreen> {
     await Future.delayed(const Duration(seconds: 1), () {
 
     });
-    /*Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => LoginScreen()),
-    );*/
-    RouterHelper.getMainRoute(action: RouteAction.pushNamedAndRemoveUntil);
+    RouterHelper.getLoginRoute(action: RouteAction.pushNamedAndRemoveUntil);
   }
   @override
   void dispose() {
     super.dispose();
-
     _onConnectivityChanged.cancel();
   }
-  void _route() async{
-
-  }
-
 
 
   @override
@@ -100,8 +101,8 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(color: Colors.white),
         child: Center(
-          child: SvgPicture.asset(
-              'Images.splash',
+          child: Image.asset(
+              images[currentImageIndex],
               fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,

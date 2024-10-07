@@ -6,6 +6,7 @@ import 'package:simple_ehr/view/main_screen.dart';
 import 'package:simple_ehr/view/my_notes/my_notes_screen.dart';
 import 'package:simple_ehr/view/patients/patient_details_screen.dart';
 import 'package:simple_ehr/view/patients/patients_screen.dart';
+import 'package:simple_ehr/view/sign_in/login_screen.dart';
 import 'package:simple_ehr/view/splash/splash_screen.dart';
 import 'package:simple_ehr/view/to_do/to_do_screen.dart';
 
@@ -16,9 +17,9 @@ import '../main.dart';
 enum RouteAction{push, pushReplacement, popAndPush, pushNamedAndRemoveUntil}
 class RouterHelper {
 
-  static const String splashScreen = '/splash';
+  static const String splashScreen = '/';
   static const String loginScreen = '/login';
-  static const String mainScreen = '/';
+  static const String mainScreen = '/main-screen';
   static const String dashBoard = '/dashboard';
   static const String patientsScreen = '/patients';
   static const String toDoScreen = '/todo';
@@ -39,7 +40,7 @@ class RouterHelper {
       )),
 
 
-
+      GoRoute(path: loginScreen, builder: (context, state) => LoginScreen()),
       GoRoute(path: dashBoard, builder: (context, state) => DashboardScreen()),
       GoRoute(path: patientsScreen, builder: (context, state) => PatientsScreen()),
       GoRoute(path: toDoScreen, builder: (context, state) => ToDoScreen()),
@@ -52,6 +53,9 @@ class RouterHelper {
 
   static String getSplashRoute({RouteAction? action}) {
     return _navigateRoute(splashScreen, route: action);
+  }
+  static String getLoginRoute({RouteAction? action}) {
+    return _navigateRoute(loginScreen, route: action);
   }
   static String getMainRoute({RouteAction? action}) {
     return _navigateRoute(mainScreen, route: action);

@@ -11,6 +11,7 @@ import 'package:simple_ehr/view/page_index_provider.dart';
 import 'package:simple_ehr/view/patients/information/add_admission_info_dialog.dart';
 import 'package:simple_ehr/view/patients/patient_details_screen.dart';
 import 'package:simple_ehr/view/sign_in/login_screen.dart';
+import 'package:simple_ehr/view/to_do/to_do_screen.dart';
 
 import 'base/tab_app_bar.dart';
 import 'dashboard/components/top_data_widget.dart';
@@ -43,15 +44,17 @@ class _MainScreenState extends State<MainScreen> {
     _screens = [
       DashboardScreen(),
       PatientsScreen(),
-      NewPatientEnrollment(),
-      PatientDetailsScreen()
+      ToDoScreen(),
+      NewPatientEnrollment()
     ];
 
   }
 
   @override
   Widget build(BuildContext context) {
+
     final isDesktop = ResponsiveHelper.isDesktop(context);
+
     final pageIndexNotifier = Provider.of<PageIndexProvider>(context);
 
     return Scaffold(
