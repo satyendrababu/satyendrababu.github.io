@@ -3,6 +3,7 @@ import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/patients/components/my_sliver_page.dart';
 import 'package:simple_ehr/view/patients/components/patient_image_widget.dart';
+import 'package:simple_ehr/view/patients/components/radio_group_field.dart';
 import 'package:simple_ehr/widget/submit_button.dart';
 
 class NewPatientEnrollment extends StatefulWidget {

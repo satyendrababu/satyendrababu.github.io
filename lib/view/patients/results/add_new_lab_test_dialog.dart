@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:simple_ehr/view/patients/results/select_lab_test_value_dialog.dart';
 
 import '../../../data/local/side_menu_data.dart';
 import '../../../utils/constant.dart';
@@ -59,10 +60,10 @@ class _AddNewLabTestDialogState extends State<AddNewLabTestDialog> {
 
                 buildLabTestList(),
                 const SizedBox(height: 20),
-                Align(
+                /*Align(
                     alignment: Alignment.centerLeft,
                     child: SubmitButton(text: 'Update', press: (){})
-                ),
+                ),*/
               ],
             ),
           ),
@@ -179,8 +180,15 @@ class _AddNewLabTestDialogState extends State<AddNewLabTestDialog> {
                     style: interMedium.copyWith(color: lightGreyColor, fontSize: 14),
                   ),
                   Spacer(),
-                  SvgPicture.asset(
-                    IconsM.addGrey,
+                  InkWell(
+                    onTap: () {
+                      showDialog(context: context,
+                          builder: (context) => SelectLabTestValueDialog(data.labTestData[index].title)
+                      );
+                    },
+                    child: SvgPicture.asset(
+                      IconsM.addGrey,
+                    ),
                   ),
                   SizedBox(width: 8,)
                 ],

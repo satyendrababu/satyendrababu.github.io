@@ -95,7 +95,14 @@ class _LabTestTabState extends State<LabTestTab> {
                                 style: interMedium.copyWith(color: iconColor, fontSize: 16),
                               ),
                               const Spacer(),
-                              SvgIcon(svgIcon: IconsM.edit),
+                              InkWell(
+                                onTap: () {
+                                  showDialog(context: context,
+                                    builder: (context) => SelectLabTestValueDialog(data.labTestData[index].title)
+                                  );
+                                },
+                                child: SvgIcon(svgIcon: IconsM.edit)
+                              ),
                               SizedBox(width: 4,),
                               SvgIcon(svgIcon: IconsM.arrowDown),
                             ],

@@ -44,4 +44,5 @@ class SideMenuData {
     MenuModel(icon: '09-12-2016', title: 'Rapid Strep'),
     MenuModel(icon: '09-12-2016', title: 'TB PPD Skin Test Result'),
   ];
+
 }
