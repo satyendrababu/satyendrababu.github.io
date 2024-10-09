@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simple_ehr/view/patients/results/lab_test_screen.dart';
-import 'package:simple_ehr/view/patients/results/vitals_screen.dart';
+import 'package:simple_ehr/view/patients/results/lab_test_tab.dart';
+import 'package:simple_ehr/view/patients/results/vitals_tab.dart';
 
 import '../../../utils/constant.dart';
 import '../../../utils/styles.dart';
@@ -83,8 +83,8 @@ class _ResultsScreenState extends State<ResultsScreen> with TickerProviderStateM
               child: TabBarView(
                   controller: tabController,
                   children: [
-                    VitalsScreen(),
-                    LabTestScreen(),
+                    VitalsTab(),
+                    LabTestTab(),
                   ]
               )
           )

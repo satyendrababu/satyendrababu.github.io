@@ -9,6 +9,7 @@ class Images {
   static const String lineRed = 'assets/images/line_red.svg';
   static const String lineYellow = 'assets/images/line_yellow.svg';
   static const String placeHolder = 'assets/images/place_holder.png';
+  static const String girlImage = 'assets/images/girl.png';
   static const String emoji = 'assets/images/emoji.png';
   static const String splash_1 = 'assets/images/splash_1.png';
   static const String splash_2 = 'assets/images/splash_2.png';

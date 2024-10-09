@@ -38,5 +38,6 @@ class IconsM {
   static const String importantTag = 'assets/icons/important_tag.svg';
   static const String highTag = 'assets/icons/high_tag.svg';
   static const String addRingGrey = 'assets/icons/add_ring_grey.svg';
+  static const String addGrey = 'assets/icons/add_grey.svg';
 
 }

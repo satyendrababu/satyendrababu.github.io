@@ -25,7 +25,9 @@ class TaskCard extends StatelessWidget {
           children: [
             Checkbox(
               value: false,
-              onChanged: (value) {},
+              onChanged: (value) {
+
+              },
             ),
             SizedBox(width: 8,),
             Expanded(

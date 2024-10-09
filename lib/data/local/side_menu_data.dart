@@ -35,4 +35,13 @@ class SideMenuData {
     MenuModel(icon: IconsM.addRingGrey, title: 'Add label'),
 
   ];
+  final labTestData = const <MenuModel>[
+    MenuModel(icon: '09-12-2016', title: 'Urine Pregnancy Test'),
+    MenuModel(icon: '09-12-2016', title: 'Urine Dipstick'),
+    MenuModel(icon: '09-12-2016', title: 'TB PPD Skin Test'),
+    MenuModel(icon: '09-12-2016', title: 'Vision Testing'),
+    MenuModel(icon: '09-12-2016', title: 'Breathalyzer'),
+    MenuModel(icon: '09-12-2016', title: 'Rapid Strep'),
+    MenuModel(icon: '09-12-2016', title: 'TB PPD Skin Test Result'),
+  ];
 }

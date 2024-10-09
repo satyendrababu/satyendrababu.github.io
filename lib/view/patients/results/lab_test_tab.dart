@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:simple_ehr/view/patients/results/add_new_lab_test_dialog.dart';
+import 'package:simple_ehr/view/patients/results/lab_test_sub_item.dart';
+import 'package:simple_ehr/view/patients/results/select_lab_test_value_dialog.dart';
 
+import '../../../data/local/side_menu_data.dart';
 import '../../../utils/constant.dart';
 import '../../../utils/icons_m.dart';
 import '../../../utils/styles.dart';
@@ -8,22 +11,19 @@ import '../../../widget/svg_icon.dart';
 import '../../../widget/svg_suffix_icon.dart';
 import '../../base/custom_box_shadow.dart';
 
-class LabTestScreen extends StatefulWidget {
+class LabTestTab extends StatefulWidget {
 
   @override
-  State<LabTestScreen> createState() => _LabTestScreenState();
+  State<LabTestTab> createState() => _LabTestTabState();
 }
 
-class _LabTestScreenState extends State<LabTestScreen> {
-  final List<String> admissionData = [
-    '09-12-2016  Admission Information',
-    '09-12-2015  Admission Information',
-    '09-12-2014  Admission Information',
-    '09-12-2013  Admission Information',
-  ];
+class _LabTestTabState extends State<LabTestTab> {
+
 
   @override
   Widget build(BuildContext context) {
+    final data = SideMenuData();
+
     return Scaffold(
       backgroundColor: mainBackgroundColor,
       body: Column(
@@ -44,6 +44,7 @@ class _LabTestScreenState extends State<LabTestScreen> {
                     // Add new information action
                     showDialog(context: context,
                         builder: (context) => AddNewLabTestDialog()
+                        //builder: (context) => SelectLabTestValueDialog()
                     );
 
                   },
@@ -66,7 +67,7 @@ class _LabTestScreenState extends State<LabTestScreen> {
               padding: const EdgeInsets.only(right: 8.0),
               child: ListView.builder(
 
-                itemCount: admissionData.length,
+                itemCount: data.labTestData.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
@@ -85,10 +86,14 @@ class _LabTestScreenState extends State<LabTestScreen> {
                           title: Row(
                             children: [
                               Text(
-                                admissionData[index],
-                                style: interSemiBold.copyWith(color: textColor, fontSize: 16),
+                                data.labTestData[index].title,
+                                style: interSemiBold.copyWith(color: textColor, fontSize: 20),
                               ),
                               SizedBox(width: 24),
+                              Text(
+                                data.labTestData[index].icon,
+                                style: interMedium.copyWith(color: iconColor, fontSize: 16),
+                              ),
                               const Spacer(),
                               SvgIcon(svgIcon: IconsM.edit),
                               SizedBox(width: 4,),
@@ -98,10 +103,7 @@ class _LabTestScreenState extends State<LabTestScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(16.0),
-                              child: Text(
-                                'Details about ${admissionData[index]} go here.',
-                                style: const TextStyle(fontSize: 14),
-                              ),
+                              child: LabTestSubItem(data.labTestData[index].title),
                             ),
                           ],
                         ),

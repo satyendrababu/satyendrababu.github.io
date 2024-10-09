@@ -103,7 +103,7 @@ class WebAppBar extends StatelessWidget {
                             child: const CircleAvatar(
                               radius: 28, // Radius of the CircleAvatar
                               backgroundImage: NetworkImage(
-                                  'https://s3-alpha-sig.figma.com/img/ab2f/238c/ac2c180c370d6398ba04e784c6dc5cb3?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PACHJnkMKosZqdz1qvf2nlROtFmZoVnpVRnmXB4XOq-4vnR72namjBn833o7rnJe2WRCvEEk7pdCX54Odec5jZ-r21FAUwTyRD30HutsCtSS6XsEc~YJ0To~rJxwM~XCjAHw6oMzuMYfatXh-bnB3eG~2FM1ypay~7~SgeQ39x8PO34LTtbvSUNvyZHH2nRu2PFiFRa2SnWv4ycd2Zo7y3nV-iZydKqGAF2EnvLmltq2T0RQcHLkfJLe2wIJyt0ocBnIsFzzcM92ayg1u8HLXLas2E7U5l6gUMCJqz7AH3aQMB9yFaAbta3n1QYRBDAdkYQOTp4nCsM-Wwe1PJ8s2A__'), // Replace with your image URL or asset
+                                  'https://s3-alpha-sig.figma.com/img/ab2f/238c/ac2c180c370d6398ba04e784c6dc5cb3?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LTmmgCMZrHNSBZJWLCaQlmAlyuPvzAf3BqntcNi6EftKZQOj56-LvZBN9-nmFDV5hWnbE~rsMD0DcuqvHXpOPX6bvIDixAB8sdw7QNVKjU4C5Hokykl7zBkMHcWIbQllM3oi3edj5zp7PVO3uV4uaNX-Q4IG0Gj9rbJVpo0-LyQpsLmTKZECznBMJrCzqDSA3LHc17QEXcd7HEOEhrnNY0T4OGlFod9411wo2DUj5RoJnSdwWJcekMZS22pm40ZOOOzWnjIuqFkMoktq7MA2FrvgaC-VNgU-EVM2~lBS2WloJxvzLHt~mFBqdafVItvTzES6i201oj4WqsdHmKCBxA__'), // Replace with your image URL or asset
                             ),
                           ),
                         ],

@@ -63,7 +63,6 @@ class PriorityTag extends StatelessWidget {
             icon,
             height: 24,
             width: 24,
-
           ),
           const SizedBox(width: 4),
           Text(

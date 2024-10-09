@@ -50,7 +50,7 @@ class _PatientDetailsScreenState extends State<PatientDetailsScreen> {
                     )
                 ),
               Expanded(
-                flex: 10,
+                flex: 11,
                 child: _getPage(currentPageIndex), // Dynamically show the selected screen
                 //child: widget.child
               ),

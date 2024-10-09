@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_ehr/utils/images.dart';
 import 'package:simple_ehr/view/patients/results/add_new_vitals_dialog.dart';
+import 'package:simple_ehr/view/patients/results/vitals_sub_item.dart';
 
 import '../../../utils/constant.dart';
 import '../../../utils/icons_m.dart';
@@ -10,14 +11,14 @@ import '../../../widget/svg_suffix_icon.dart';
 import '../../base/custom_box_shadow.dart';
 import '../information/add_admission_info_dialog.dart';
 
-class VitalsScreen extends StatefulWidget {
+class VitalsTab extends StatefulWidget {
 
 
   @override
-  State<VitalsScreen> createState() => _VitalsScreenState();
+  State<VitalsTab> createState() => _VitalsTabState();
 }
 
-class _VitalsScreenState extends State<VitalsScreen> {
+class _VitalsTabState extends State<VitalsTab> {
 
   final _formKey = GlobalKey<FormState>();
   final List<String> admissionData = [
@@ -125,10 +126,7 @@ class _VitalsScreenState extends State<VitalsScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(16.0),
-                              child: Text(
-                                'Details about ${admissionData[index]} go here.',
-                                style: const TextStyle(fontSize: 14),
-                              ),
+                              child: VitalsSubItem()
                             ),
                           ],
                         ),

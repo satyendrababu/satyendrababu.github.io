@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_ehr/helper/router_helper.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
+import 'package:simple_ehr/utils/images.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/patients/components/patient.dart';
 import 'package:simple_ehr/view/patients/new_patient_enrollment.dart';
@@ -42,8 +43,8 @@ class PatientCard extends StatelessWidget {
                   decoration:  BoxDecoration(
                       borderRadius: BorderRadius.circular(12) // Adjust the radius as needed
                   ),
-                    child: Image.network(
-                      'https://s3-alpha-sig.figma.com/img/9978/9824/fcfbdd4fd9f433e2969ddf0a559a518d?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=QMIykSDMQNhIyqywJm3P3oDwVfJyiPTxYDCkZKe3hhCqSdIiQNCGbPmAvIxFfnMRgxJoiIpXQFXPuMfMCENPk8c5Vwuz6U-Bboo9ldxm1WpuA3yWbKyvp82wYGuU1wHu96nXNu~I-DOycN2nb~SpIawA2GbuHzAZm6FW-LxoZ8RWcAcy9dOiGQK01mIadJ88IBJYSFGZg~goyU7ElVLTMFypWwDAtqU70n1kwIG-aeOy~Cggg1tFSeW~QpXfm2jy9Uj52B855QBAI1QwjyHm4gdaRyRfoklJ0W1gx5NF~RmPDDTlHoFQ2nRCyF9NdoEvCe0A3jgg9zdt1ZD2kDRTdQ__',
+                    child: Image.asset(
+                      Images.placeHolder,
                       fit: BoxFit.cover,
                     )
                 ),
