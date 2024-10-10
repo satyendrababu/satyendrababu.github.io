@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/utils/styles.dart';
+import 'package:simple_ehr/widget/custom_dropdown_menu.dart';
+import 'package:simple_ehr/widget/custom_radio_button.dart';
+import 'package:simple_ehr/widget/custom_text_field.dart';
 import 'package:simple_ehr/widget/submit_button.dart';
 import 'package:simple_ehr/widget/svg_icon.dart';
 
@@ -58,29 +61,46 @@ class _AddAdmissionInfoDialogState extends State<AddAdmissionInfoDialog> {
                 ),
                 const SizedBox(height: 20),
                 GridView.count(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   shrinkWrap: true,
                   crossAxisSpacing: 16,
                   //mainAxisSpacing: 16,
                   childAspectRatio: 3,
                   physics: NeverScrollableScrollPhysics(),
                   children: [
-                    buildTextField("Date of Admission",
-                        "09-12-2016", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Date of Discharge", "09-18-2016", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Length of Stay", "6 Days", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Service", "Surgery", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Attending Physician", "Dr. P", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Admitting Physician", "Dr. H", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Floor", "3", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Room", "23", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Bed", "A", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Surgery/Procedure", "Lap Cholecystectomy", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Date of Procedure", "09-13-2016", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Post Operative Days", "41 Days", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Surgery/Procedure", "Exploratory Laparoscopic", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Date of Procedure", "09-13-2016", firstNameController, 'Please enter date of admission'),
-                    buildTextField("Post Operative Days", "41 Days", firstNameController, 'Please enter date of admission'),
+                    /*CustomTextField(
+                      label: 'Patient First Name',
+                      hintText: 'Type your text',
+                      initialValue: 'Anurag',
+                      errorText: '',
+                      controller: firstNameController,
+                      onChanged: (value) {
+                        print('Text value changed $value');
+                      },
+
+                    ),*/
+                    CustomDropdownMenu(
+                        onSelectionChanged: (selectedStatus) {},
+                        label: 'Marital Status',
+                        options:['Single', 'Married', 'Divorced', 'Widowed'],
+                    ),
+
+                    buildTextField('Date of Admission',
+                        '09-12-2016', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Date of Discharge', '09-18-2016', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Length of Stay', '6 Days', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Service', 'Surgery', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Attending Physician', 'Dr. P', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Admitting Physician', 'Dr. H', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Floor', '3', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Room', '23', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Bed', 'A', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Surgery/Procedure', 'Lap Cholecystectomy', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Date of Procedure', '09-13-2016', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Post Operative Days', '41 Days', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Surgery/Procedure', 'Exploratory Laparoscopic', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Date of Procedure', '09-13-2016', firstNameController, 'Please enter date of admission'),
+                    buildTextField('Post Operative Days', '41 Days', firstNameController, 'Please enter date of admission'),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -101,9 +121,9 @@ class _AddAdmissionInfoDialogState extends State<AddAdmissionInfoDialog> {
   Widget buildTextField(String labelText, String initialValue,TextEditingController controller,
       String errorMessage, {FormFieldValidator<String>? validator}) {
     return TextFormField(
-      //initialValue: initialValue,
+      initialValue: initialValue,
       cursorColor: blueColor,
-      controller: controller,
+      //controller: controller,
       style: interMedium.copyWith(color: textColor, fontSize: 14),
       decoration: InputDecoration(
 

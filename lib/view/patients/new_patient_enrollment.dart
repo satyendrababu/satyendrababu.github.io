@@ -4,7 +4,11 @@ import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/patients/components/my_sliver_page.dart';
 import 'package:simple_ehr/view/patients/components/patient_image_widget.dart';
 import 'package:simple_ehr/view/patients/components/radio_group_field.dart';
+import 'package:simple_ehr/widget/custom_dropdown_menu.dart';
+import 'package:simple_ehr/widget/custom_radio_button.dart';
 import 'package:simple_ehr/widget/submit_button.dart';
+
+import '../../widget/custom_text_field.dart';
 
 class NewPatientEnrollment extends StatefulWidget {
   static final String id = "new_patient_enrollment";
@@ -17,14 +21,7 @@ class NewPatientEnrollment extends StatefulWidget {
 
 class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
   final _formKey = GlobalKey<FormState>();
-  // TextEditingControllers to manage the input values
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController dateOfBirthController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController contactNumberController = TextEditingController();
-  String gender = 'Male'; // Default value
-  final ScrollController _scrollController = ScrollController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -75,58 +72,82 @@ class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
                 ],
               ),
               //_scrollView(_scrollController, context),
-              const SizedBox(height: 16),
-              GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 4,
-                shrinkWrap: true,
-      
-                children: [
-                  buildTextField(
-                    'Patient First Name',
-                    firstNameController,
-                    'Please enter first name',
-                  ),
-                  buildTextField(
-                    'Patient Last Name',
-                    lastNameController,
-                    'Please enter last name',
-                  ),
-                  buildTextField(
-                    'Date of Birth',
-                    dateOfBirthController,
-                    'Please enter date of birth',
-                  ),
-                  buildTextField(
-                    'Email Address',
-                    emailController,
-                    'Please enter a valid email',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Email is required';
-                      }
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  buildTextField(
-                    'Contact Number',
-                    contactNumberController,
-                    'Please enter contact number',
-                  ),
-                  buildGenderSelection(),
-                ],
-              ),
+              const SizedBox(height: 40),
+              buildEnrollmentForm(),
               const SizedBox(height: 32),
       
             ],
           ),
         ),
       ),
+    );
+  }
+  Widget buildEnrollmentForm(){
+    return Column(
+      children: [
+        SizedBox(height: 16),
+        Row(
+          children: [
+            Flexible(child: CustomTextField(label: 'Patient First Name')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Patient Last Name')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Date of Birth')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child: CustomRadioButton(onSelectionChanged: (value) {})),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Height (inches)')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Weight (Pounds)')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child:  CustomDropdownMenu(
+              onSelectionChanged: (selectedStatus) {},
+              label: 'Marital Status',
+              options:['','Single', 'Married', 'Divorced', 'Widowed'],
+            ),
+            ),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Contact Number')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Email Address')),
+          ],
+        ),
+
+        SizedBox(height: 32),
+        Row(
+          children: [
+
+            Flexible(child: CustomTextField(label: 'Address Line1')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Address Line2')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child: CustomTextField(label: 'State')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Postal/Zip Code')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'City')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child: CustomTextField(label: 'Taking medications', maxLines: 12,)),
+          ],
+        ),
+
+      ],
     );
   }
 
@@ -176,44 +197,6 @@ class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
         }
         return null;
       },
-    );
-  }
-
-  // Gender Selection Widget with Radio Buttons
-  Widget buildGenderSelection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text('Sex'),
-        Row(
-          children: [
-            Expanded(
-              child: RadioListTile(
-                title: const Text('Male'),
-                value: 'Male',
-                groupValue: gender,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value as String;
-                  });
-                },
-              ),
-            ),
-            Expanded(
-              child: RadioListTile(
-                title: const Text('Female'),
-                value: 'Female',
-                groupValue: gender,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value as String;
-                  });
-                },
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 

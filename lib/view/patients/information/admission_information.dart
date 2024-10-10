@@ -7,6 +7,7 @@ import '../../../utils/styles.dart';
 import '../../../widget/svg_icon.dart';
 import '../../../widget/svg_suffix_icon.dart';
 import '../../base/custom_box_shadow.dart';
+import 'admission_information_subitem.dart';
 
 class AdmissionInformation extends StatefulWidget {
   @override
@@ -95,10 +96,7 @@ class _AdmissionInformationState extends State<AdmissionInformation> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(16.0),
-                              child: Text(
-                                'Details about ${admissionData[index]} go here.',
-                                style: const TextStyle(fontSize: 14),
-                              ),
+                              child: AdmissionInformationSubitem(),
                             ),
                           ],
                         ),
@@ -130,6 +128,7 @@ class _AdmissionInformationState extends State<AdmissionInformation> {
         borderRadius: BorderRadius.circular(18),
         // Match border radius of the TextFormField
         boxShadow: CustomBoxShadow.getTextFieldShadow(primaryColor),
+
       ),
       child: TextFormField(
         keyboardType: TextInputType.text,

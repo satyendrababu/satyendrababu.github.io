@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:simple_ehr/utils/app_context_extension.dart';
 import 'package:simple_ehr/utils/constant.dart';
+import 'package:simple_ehr/view/patients/new_patient_enrollment_dialog.dart';
 import 'package:simple_ehr/view/sign_in/component/sign_in_body.dart';
 import 'package:simple_ehr/view/sign_in/component/sign_in_form.dart';
 
@@ -65,6 +66,9 @@ class _SearchAddPatientBarState extends State<SearchAddPatientBar> {
                     child: TextButton.icon(
                       onPressed: () {
                         // Add new patient action
+                        showDialog(context: context,
+                            builder: (context) => NewPatientEnrollmentDialog()
+                        );
                       },
                       icon: SvgIcon(svgIcon: IconsM.addRing),
                       label: Text(

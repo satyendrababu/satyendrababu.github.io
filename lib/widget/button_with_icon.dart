@@ -16,7 +16,7 @@ class ButtonWithIcon extends StatelessWidget {
     return GestureDetector(
       onTap: () => press as void Function()?,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(// Button color
           borderRadius: BorderRadius.circular(16),
           gradient: LinearGradient(
@@ -43,7 +43,7 @@ class ButtonWithIcon extends StatelessWidget {
             SvgIcon(
               svgIcon: icon,
             ),
-            SizedBox(width: 8),
+            Visibility(visible : icon != '',child: SizedBox(width: 8)),
             Text(
               text,
               style: interMedium.copyWith(fontSize: 16, color: Colors.white),

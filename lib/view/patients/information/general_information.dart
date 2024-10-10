@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:simple_ehr/widget/button_with_icon.dart';
 
 import '../../../utils/constant.dart';
 import '../../../utils/styles.dart';
+import '../../../widget/custom_dropdown_menu.dart';
+import '../../../widget/custom_radio_button.dart';
+import '../../../widget/custom_text_field.dart';
 
 class GeneralInformation extends StatefulWidget {
 
@@ -31,92 +35,13 @@ class _GeneralInformationState extends State<GeneralInformation> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /*Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //PatientImageWidget(),
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0XFFC7D8FF)),
-                        borderRadius: BorderRadius.circular(16)
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: RichText(
-                        text: TextSpan(
-                          text: 'MRN:',
-                          style: TextStyle(
-                              color: blueColor,
-                              fontWeight: interRegular.fontWeight,
-                              fontSize: 24
-                          ),
-                          children: [
-                            TextSpan(
-                              text: ' 1122334455',
-                              style: TextStyle(
-                                  color: nameBlackColor,
-                                  fontWeight: interRegular.fontWeight,
-                                  fontSize: 24
-                              ),
-                            ),
-                          ],
-                        ),
 
-                      ),
-                    ),
-                  ),
-                  //SubmitButton(text: 'Submit', press: (){})
 
-                ],
-              ),*/
-              //_scrollView(_scrollController, context),
-              //const SizedBox(height: 16),
-              GridView.count(
-                crossAxisCount: 3,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 16,
-                childAspectRatio: 4,
-                shrinkWrap: true,
-
-                children: [
-                  buildTextField(
-                    'Patient First Name',
-                    firstNameController,
-                    'Please enter first name',
-                  ),
-                  buildTextField(
-                    'Patient Last Name',
-                    lastNameController,
-                    'Please enter last name',
-                  ),
-                  buildTextField(
-                    'Date of Birth',
-                    dateOfBirthController,
-                    'Please enter date of birth',
-                  ),
-                  buildTextField(
-                    'Email Address',
-                    emailController,
-                    'Please enter a valid email',
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Email is required';
-                      }
-                      if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                        return 'Enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  buildTextField(
-                    'Contact Number',
-                    contactNumberController,
-                    'Please enter contact number',
-                  ),
-                  //buildGenderSelection(),
-                ],
-              ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
+              buildEnrollmentForm(),
+              const SizedBox(height: 20),
+              ButtonWithIcon(icon: '', text: 'Update', press: () {}),
+              const SizedBox(height: 16),
 
             ],
           ),
@@ -124,7 +49,74 @@ class _GeneralInformationState extends State<GeneralInformation> {
       ),
     );
   }
+  Widget buildEnrollmentForm(){
+    return Column(
+      children: [
+        SizedBox(height: 16),
+        Row(
+          children: [
+            Flexible(child: CustomTextField(label: 'Patient First Name')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Patient Last Name')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Date of Birth')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child: CustomRadioButton(onSelectionChanged: (value) {})),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Height (inches)')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Weight (Pounds)')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child:  CustomDropdownMenu(
+              onSelectionChanged: (selectedStatus) {},
+              label: 'Marital Status',
+              options:['','Single', 'Married', 'Divorced', 'Widowed'],
+            ),
+            ),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Contact Number')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Email Address')),
+          ],
+        ),
 
+        SizedBox(height: 32),
+        Row(
+          children: [
+
+            Flexible(child: CustomTextField(label: 'Address Line1')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Address Line2')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child: CustomTextField(label: 'State')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'Postal/Zip Code')),
+            SizedBox(width: 16),
+            Flexible(child: CustomTextField(label: 'City')),
+          ],
+        ),
+        SizedBox(height: 32),
+        Row(
+          children: [
+            Flexible(child: CustomTextField(label: 'Taking medications', maxLines: 12,)),
+          ],
+        ),
+
+      ],
+    );
+  }
   // Reusable TextField Widget with Validation
   Widget buildTextField(String labelText, TextEditingController controller,
       String errorMessage, {FormFieldValidator<String>? validator}) {
