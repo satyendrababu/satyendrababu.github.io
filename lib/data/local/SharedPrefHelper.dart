@@ -12,6 +12,7 @@ class SharedPrefHelper {
   static const String intro = 'intro';
   static const String login = 'login';
 
+
   static const String insuranceName = 'insuranceName';
   static const String policyNumber = 'policyNumber';
 

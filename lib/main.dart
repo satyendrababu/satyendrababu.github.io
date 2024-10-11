@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_ehr/helper/router_helper.dart';
+import 'package:simple_ehr/provider/splash_provider.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/view/main_screen.dart';
 import 'package:simple_ehr/view/page_index_provider.dart';
 import 'package:simple_ehr/view/splash/splash_screen.dart';
+import 'di_container.dart' as di;
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-void main() {
+void main() async {
+  //DI starting point
+  await di.init();
+
+
   runApp(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => PageIndexProvider())
+          
+          ChangeNotifierProvider(create: (_) => PageIndexProvider()),
+          ChangeNotifierProvider(create: (_) => di.sl<SplashProvider>())
         ],
         child: MyApp(),
       ),
