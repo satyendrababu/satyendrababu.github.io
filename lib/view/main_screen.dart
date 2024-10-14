@@ -13,6 +13,7 @@ import 'package:simple_ehr/view/patients/patient_details_screen.dart';
 import 'package:simple_ehr/view/sign_in/login_screen.dart';
 import 'package:simple_ehr/view/to_do/to_do_screen.dart';
 
+import '../provider/splash_provider.dart';
 import 'base/tab_app_bar.dart';
 import 'dashboard/components/top_data_widget.dart';
 import 'patients/new_patient_enrollment.dart';
@@ -48,6 +49,8 @@ class _MainScreenState extends State<MainScreen> {
       NewPatientEnrollment()
     ];
 
+    final splashProvider = Provider.of<SplashProvider>(context, listen: false);
+    splashProvider.initConfig();
   }
 
   @override
