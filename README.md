@@ -1,16 +1,67 @@
 # simple_ehr
 
-A new Flutter project.
+A Simple EHR project created in flutter by using [get_it] for dependency injection, [provider] for state management,
+[dio] for network api calling and [go_router] for routing the pages.
+This project is following the MVVM architectural design pattern.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# simple_ehr App Setup and Installation
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
+Before setting up the project, ensure that your development environment meets the following OS-level requirements.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Windows:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+###  1. Flutter SDK 
+
+* Download the flutter SDK from the official website the link is given below.
+https://docs.flutter.dev/get-started/install/windows/mobile
+* Extract the zip file in any location and add the flutter\bin directory to your system path.
+
+###  2. Android Studio
+* Download and install android studio from the official website the link is given below.
+https://developer.android.com/studio
+* Once the android studio installed make sure to download the plugins for Flutter and Dart by going in File->Setting->Plugin and also download the amulator
+
+###  3. Git
+* Install git from here https://git-scm.com/downloads/win
+
+## mac OS:
+
+###  1. Flutter SDK
+*Download the flutter SDK from the official website the link is given below.
+  https://docs.flutter.dev/get-started/install/windows/mobile
+* Extract the zip file in any location and add the flutter\bin directory to your system path.
+
+###  2. Android Studio
+* Download and install android studio from the official website the link is given below.
+  https://developer.android.com/studio
+* Once the android studio installed make sure to download the plugins for Flutter and Dart by going in File->Setting->Plugin and also download the amulator
+
+###  3. Git
+* Install git from here https://git-scm.com/downloads/win
+
+
+# Generate the build for Android, ios and web 
+
+## Android:
+
+* Navigate to Build->Flutter->build APK 
+Android debug build will be generated can be distribute and install
+
+## IOS
+
+* Install flutter SDK and Android studio or Visual studio code
+* Ensure you have latest version of Xcode installed
+* Open project in android studio or visual studio
+* Open the Xcode and navigate to the ios folder
+* Open Runner.xcworkspace in Xcode
+* Configure valid apple developer account under signing & capabilities
+* Run "flutter build ios" to generate the ios build
+* Ipa file will be generated under ios->build-> folder called Runner
+
+
+## Web
+
+* Navigate to the terminal and run the command "flutter build web"
+* Navigate to build->web and all deployable files are there.

@@ -1,8 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-
-import '../data/remote/response/api_response.dart';
+import '../data/datasource/remote/response/api_response.dart';
 import '../model/login_response.dart';
 import '../repository/sign_in/login_repo_imp.dart';
 

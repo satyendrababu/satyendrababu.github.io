@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_ehr/utils/app_context_extension.dart';
-
-
-import '../../../data/remote/response/status.dart';
+import '../../../data/datasource/remote/response/status.dart';
 import '../../../helper/router_helper.dart';
 import '../../../utils/constant.dart';
 import '../../../utils/dialogs.dart';

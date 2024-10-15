@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_ehr/helper/router_helper.dart';
+import 'package:simple_ehr/provider/splash_provider.dart';
 import 'package:simple_ehr/utils/images.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/sign_in/login_screen.dart';
@@ -76,6 +78,8 @@ class _SplashScreenState extends State<SplashScreen> {
     if(currentImageIndex == 6) {
       _navigateToHome();
     }
+
+    Provider.of<SplashProvider>(context).initConfig();
 
   }
 
