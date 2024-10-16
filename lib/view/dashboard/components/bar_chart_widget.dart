@@ -25,69 +25,67 @@ class _BarChartWidgetState extends State<BarChartWidget> {
   @override
   Widget build(BuildContext context) {
 
-    return Expanded(
-        child: BarChart(
-            BarChartData(
-              barGroups: _chartGroups(points: widget.chartData.data, color: widget.chartColor),
-              borderData: FlBorderData(border: const Border()),
-              gridData: FlGridData(show: false),
-              titlesData: FlTitlesData(
-                bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    getTitlesWidget: (value, meta) {
-                      final isTouched = touchedIndex == value.toInt();
-                      return Padding(
-                          padding: EdgeInsets.only(top: 5),
-                        child: Text(
-                          widget.chartData.bottomLabel[value.toInt()],
-                          style: TextStyle(
-                              color: isTouched ? textColor : lightGreyColor,
-                              fontWeight: interRegular.fontWeight
-                          ),
-                        ),
-                      );
-                    }
-                  )
-                ),
-                leftTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                topTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                rightTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-              ),
-              barTouchData: BarTouchData(
-                touchCallback: (FlTouchEvent event, barTouchResponse) {
-                  if (barTouchResponse != null && barTouchResponse.spot != null) {
-                    setState(() {
-                      touchedIndex = barTouchResponse.spot!.touchedBarGroupIndex;
-                    });
-                  } else {
-                    setState(() {
-                      touchedIndex = -1; // Reset if no bar is touched
-                    });
-                  }
-                },
-                touchTooltipData: BarTouchTooltipData(
-                   // Customize the tooltip background color
-                  getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                    String label = widget.chartData.bottomLabel[group.x.toInt()];
-                    return BarTooltipItem(
-                      '$label\n${rod.toY} Patients',
-                      TextStyle(
-                          color: Colors.white,
-                          fontWeight: interRegular.fontWeight,
-                        fontSize: 12
+    return BarChart(
+        BarChartData(
+          barGroups: _chartGroups(points: widget.chartData.data, color: widget.chartColor),
+          borderData: FlBorderData(border: const Border()),
+          gridData: FlGridData(show: false),
+          titlesData: FlTitlesData(
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: (value, meta) {
+                  final isTouched = touchedIndex == value.toInt();
+                  return Padding(
+                      padding: EdgeInsets.only(top: 5),
+                    child: Text(
+                      widget.chartData.bottomLabel[value.toInt()],
+                      style: TextStyle(
+                          color: isTouched ? textColor : lightGreyColor,
+                          fontWeight: interRegular.fontWeight
                       ),
-                    );
-                  },
-                ),
-              ),
-            )
+                    ),
+                  );
+                }
+              )
+            ),
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            topTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+            rightTitles: AxisTitles(
+              sideTitles: SideTitles(showTitles: false),
+            ),
+          ),
+          barTouchData: BarTouchData(
+            touchCallback: (FlTouchEvent event, barTouchResponse) {
+              if (barTouchResponse != null && barTouchResponse.spot != null) {
+                setState(() {
+                  touchedIndex = barTouchResponse.spot!.touchedBarGroupIndex;
+                });
+              } else {
+                setState(() {
+                  touchedIndex = -1; // Reset if no bar is touched
+                });
+              }
+            },
+            touchTooltipData: BarTouchTooltipData(
+               // Customize the tooltip background color
+              getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                String label = widget.chartData.bottomLabel[group.x.toInt()];
+                return BarTooltipItem(
+                  '$label\n${rod.toY} Patients',
+                  TextStyle(
+                      color: Colors.white,
+                      fontWeight: interRegular.fontWeight,
+                    fontSize: 12
+                  ),
+                );
+              },
+            ),
+          ),
         )
     );
 

@@ -37,46 +37,44 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        Expanded(
-          child: Container(
-            width: double.infinity,
-            height: 60,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: Color(0xFFC7D8FF), // Border color
-                width: 1,
+        Container(
+          width: double.infinity,
+          height: 60,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(
+              color: Color(0xFFC7D8FF), // Border color
+              width: 1,
+            ),
+          ),
+          padding: const EdgeInsets.fromLTRB(16,8,4,8),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                value: selectedItem,
+                icon: SvgSuffixIcon(svgIcon: IconsM.arrowDown),
+                elevation: 16,
+                style: interMedium.copyWith(color: textColor, fontSize: 16),
+                dropdownColor: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedItem = newValue!;
+                  });
+                },
+                items: widget.options
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
               ),
             ),
-            padding: const EdgeInsets.fromLTRB(16,8,4,8),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  value: selectedItem,
-                  icon: SvgSuffixIcon(svgIcon: IconsM.arrowDown),
-                  elevation: 16,
-                  style: interMedium.copyWith(color: textColor, fontSize: 16),
-                  dropdownColor: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedItem = newValue!;
-                    });
-                  },
-                  items: widget.options
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                ),
-              ),
-          ),
         ),
         Positioned(
           left: 10,
-          top: -10,
+          top: -14,
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,

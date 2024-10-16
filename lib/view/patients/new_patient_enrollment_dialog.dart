@@ -117,7 +117,12 @@ class _NewPatientEnrollmentDialogState extends State<NewPatientEnrollmentDialog>
         SizedBox(height: 32),
         Row(
           children: [
-            Flexible(child: CustomRadioButton(onSelectionChanged: (value) {})),
+            Flexible(child:  CustomDropdownMenu(
+              onSelectionChanged: (selectedStatus) {},
+              label: 'Marital Status',
+              options:['','Single', 'Married', 'Divorced', 'Widowed'],
+            ),
+            ),
             SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Height (inches)')),
             SizedBox(width: 16),

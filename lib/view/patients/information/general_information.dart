@@ -65,7 +65,11 @@ class _GeneralInformationState extends State<GeneralInformation> {
         SizedBox(height: 32),
         Row(
           children: [
-            Flexible(child: CustomRadioButton(onSelectionChanged: (value) {})),
+            Flexible(child: CustomRadioButton(
+                label: 'Sex',
+                options: ['Male','Female','Other'],
+                onSelectionChanged: (value) {})
+            ),
             SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Height (inches)')),
             SizedBox(width: 16),
@@ -79,7 +83,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
               onSelectionChanged: (selectedStatus) {},
               label: 'Marital Status',
               options:['','Single', 'Married', 'Divorced', 'Widowed'],
-            ),
+              ),
             ),
             SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Contact Number')),
@@ -110,7 +114,7 @@ class _GeneralInformationState extends State<GeneralInformation> {
         SizedBox(height: 32),
         Row(
           children: [
-            Flexible(child: CustomTextField(label: 'Taking medications', maxLines: 12,)),
+            Flexible(child: CustomTextField(label: 'Taking medications', maxLines: 6,)),
           ],
         ),
 

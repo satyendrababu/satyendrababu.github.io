@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:simple_ehr/utils/images.dart';
 
 import '../../../utils/constant.dart';
 import '../../../utils/icons_m.dart';
@@ -31,8 +32,8 @@ class PatientDetailsAppBar extends StatelessWidget {
                   decoration:  BoxDecoration(
                       borderRadius: BorderRadius.circular(12) // Adjust the radius as needed
                   ),
-                  child: Image.network(
-                    'https://s3-alpha-sig.figma.com/img/0844/4de9/97418cb7b10885001f1d12fe7966e72c?Expires=1728864000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LbpgyThNDu4AW1jBeDXwFvqnLjp2t~bSzQEjoZrZ107fx602uwtkdKauRibQkLmGhZfdrV8t4loRDqBC5zigwkFR-MmaOH2uczH3bWgUs2PjqDd~TMpIRsZRgS~fs2nx5dX5~8oZuA2JBjnxX0XDBnKy2S7UUer~ONOK34ELYfWNwQRHyE0~~23dE-EwqPpMleFnkwda842qLSV-W~gXFw3tDNNizuUPy-BmuMeP-YDl8Fi-GL3QfdvAdWF14At1aHbzY-r3XTN9RkqX3H3msAQsFA8iokbOyAFxhX6RjdcNZo7mcy3u7wzTvbEf4eD2yP926DbsZJge8fPs7gZT5w__',
+                  child: Image.asset(
+                    Images.placeHolder,
                     fit: BoxFit.cover,
                   )
               ),
@@ -119,7 +120,9 @@ class PatientDetailsAppBar extends StatelessWidget {
             ),
 
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+              },
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SvgPicture.asset(

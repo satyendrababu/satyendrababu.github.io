@@ -19,7 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.errorText,
     this.controller,
     this.onChanged,
-    this.maxLines
+    this.maxLines = 1
   }) : super(key: key);
 
 
@@ -32,7 +32,7 @@ class CustomTextField extends StatelessWidget {
       clipBehavior: Clip.none, // Allows the label to extend beyond the stack's boundary
       children: [
         Container(
-          height: 60,
+          //height: maxLines! + 60, // Adjust height based on maxLines
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(10),
@@ -41,9 +41,9 @@ class CustomTextField extends StatelessWidget {
               width: 1,
             ),
           ),
-          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+          padding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
           child: TextFormField(
-            maxLines: 12,
+            maxLines: maxLines,
             controller: effectiveController,
             cursorColor: blueColor,
             decoration: InputDecoration(
@@ -57,7 +57,7 @@ class CustomTextField extends StatelessWidget {
         ),
         Positioned(
           left: 10,
-          top: -10, // Move the label slightly above the border line
+          top: -14, // Move the label slightly above the border line
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,

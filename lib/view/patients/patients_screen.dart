@@ -90,27 +90,25 @@ class _PatientsScreenState extends State<PatientsScreen> {
                 backgroundColor: mainBackgroundColor,
                 pinned: false,
                 leading: null,
-                title: Flexible(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 20),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Text(
-                          'Patients',
-                          textAlign: TextAlign.left,
+                title: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        'Patients',
+                        textAlign: TextAlign.left,
 
-                          style: TextStyle(
-                              fontWeight: interSemiBold.fontWeight,
-                              color: textColor,
-                              fontSize: 28
-                          ),
+                        style: TextStyle(
+                            fontWeight: interSemiBold.fontWeight,
+                            color: textColor,
+                            fontSize: 28
                         ),
                       ),
+                    ),
 
-                    ],
-                  ),
+                  ],
                 ),
               ),
 

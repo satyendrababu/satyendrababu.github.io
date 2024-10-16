@@ -14,185 +14,146 @@ class PieChartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pieChartData = PieData();
-    return Expanded(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 240,
-            child: Stack(
-              children: [
-                PieChart(
-                    PieChartData(
-                      sectionsSpace: 0,
-                      centerSpaceRadius: 70,
-                      startDegreeOffset: -90,
-                      //sections: pieChartData.pieChartSelectionData,
-                        sections: _getSections(),
-                      borderData: FlBorderData(show: false)
-                    )
-                ),
-                /*Positioned(
-                  top: 20,
-                  left: 10,
-                  child: SvgPicture.asset(
-                    Images.lineBlue,
-                    width: 50, // Adjust width as needed
-                    height: 50, // Adjust height as needed
-                  ),
-                ),
-                // Position lineBlue for the second direction (top-right)
-                Positioned(
-                  top: 20,
-                  right: 10,
-                  child: SvgPicture.asset(
-                    Images.lineBlue,
-                    width: 50, // Adjust width as needed
-                    height: 50, // Adjust height as needed
-                  ),
-                ),
-                // Position lineBlue for the third direction (bottom-center)
-                Positioned(
-                  bottom: 20,
-                  left: 80, // Adjust left for horizontal centering
-                  child: SvgPicture.asset(
-                    Images.lineBlue,
-                    width: 50, // Adjust width as needed
-                    height: 50, // Adjust height as needed
-                  ),
-                ),
-                // Centered content in the middle of the PieChart
-                Positioned.fill(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(Images.lineBlue), // Add your middle content
-                    ],
-                  ),
-                ),*/
-              ],
-            ),
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-
+    return Column(
+      children: [
+        SizedBox(
+          height: 240,
+          child: Stack(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      Container(
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                          color: blueColor,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                          'Completed Task',
-                        style: TextStyle(
-                          color: textColor,
-                          fontWeight: interRegular.fontWeight,
-                          fontSize: 12
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                      '942',
-                    style: TextStyle(
-                        color: textColor,
-                        fontWeight: interSemiBold.fontWeight,
-                        fontSize: 32
-                    ),
+              PieChart(
+                  PieChartData(
+                    sectionsSpace: 0,
+                    centerSpaceRadius: 70,
+                    startDegreeOffset: -90,
+                    //sections: pieChartData.pieChartSelectionData,
+                      sections: _getSections(),
+                    borderData: FlBorderData(show: false)
                   )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      Container(
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                          color: lightRedColor,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Pending Task',
-                        style: TextStyle(
-                            color: textColor,
-                            fontWeight: interRegular.fontWeight,
-                            fontSize: 12
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    '42',
-                    style: TextStyle(
-                        color: textColor,
-                        fontWeight: interSemiBold.fontWeight,
-                        fontSize: 32
-                    ),
-                  )
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-                    children: [
-                      Container(
-                        width: 12,
-                        height: 12,
-                        decoration: BoxDecoration(
-                          color: lightYellowColor,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Text(
-                        'Running Task',
-                        style: TextStyle(
-                            color: textColor,
-                            fontWeight: interRegular.fontWeight,
-                            fontSize: 12
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 4),
-                  Text(
-                    '1,942',
-                    style: TextStyle(
-                        color: textColor,
-                        fontWeight: interSemiBold.fontWeight,
-                        fontSize: 32
-                    ),
-                  )
-                ],
               ),
 
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+        SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: blueColor,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                        'Completed Task',
+                      style: TextStyle(
+                        color: textColor,
+                        fontWeight: interRegular.fontWeight,
+                        fontSize: 12
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 4),
+                Text(
+                    '942',
+                  style: TextStyle(
+                      color: textColor,
+                      fontWeight: interSemiBold.fontWeight,
+                      fontSize: 32
+                  ),
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: lightRedColor,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      'Pending Task',
+                      style: TextStyle(
+                          color: textColor,
+                          fontWeight: interRegular.fontWeight,
+                          fontSize: 12
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 4),
+                Text(
+                  '42',
+                  style: TextStyle(
+                      color: textColor,
+                      fontWeight: interSemiBold.fontWeight,
+                      fontSize: 32
+                  ),
+                )
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [
+                    Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        color: lightYellowColor,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      'Running Task',
+                      style: TextStyle(
+                          color: textColor,
+                          fontWeight: interRegular.fontWeight,
+                          fontSize: 12
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 4),
+                Text(
+                  '1,942',
+                  style: TextStyle(
+                      color: textColor,
+                      fontWeight: interSemiBold.fontWeight,
+                      fontSize: 32
+                  ),
+                )
+              ],
+            ),
+
+          ],
+        )
+      ],
     );
   }
   List<PieChartSectionData> _getSections() {

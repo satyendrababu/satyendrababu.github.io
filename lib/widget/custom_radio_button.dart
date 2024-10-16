@@ -4,18 +4,23 @@ import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 
 class CustomRadioButton extends StatefulWidget {
-
+  final String label;
+  final List<String> options; // Options for radio buttons
   final Function(String) onSelectionChanged; // Callback function
-  CustomRadioButton({required this.onSelectionChanged});
 
+
+  CustomRadioButton({
+    required this.label,
+    required this.options,
+    required this.onSelectionChanged,
+  });
 
   @override
   State<CustomRadioButton> createState() => _CustomRadioButtonState();
 }
 
 class _CustomRadioButtonState extends State<CustomRadioButton> {
-  int selectedIndex = 0; // 0 for Male, 1 for Female, 2 for Other
-  final List<String> options = ['Male', 'Female', 'Other'];
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +41,21 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
           child: Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildRadioButton(context, 'Male', 0),
-                const SizedBox(width: 16.0),
-                _buildRadioButton(context, 'Female', 1),
-                const SizedBox(width: 16.0),
-                _buildRadioButton(context, 'Other', 2),
-              ],
+              children: List.generate(widget.options.length, (index) {
+                return Row(
+                  children: [
+                    _buildRadioButton(context, widget.options[index], index),
+                    if (index < widget.options.length - 1)
+                      const SizedBox(width: 16.0), // Space between buttons
+                  ],
+                );
+              }),
             ),
           ),
         ),
         Positioned(
           left: 10,
-          top: -10,
+          top: -14,
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -56,7 +63,7 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
             ),
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
             child: Text(
-              'Sex',
+              widget.label,
               style: interMedium.copyWith(color: blueColor, fontSize: 14),
             ),
           ),
@@ -71,17 +78,18 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
       onPressed: () {
         setState(() {
           selectedIndex = index;
-          widget.onSelectionChanged(options[selectedIndex]);
+          widget.onSelectionChanged(widget.options[selectedIndex]);
         });
       },
       style: ElevatedButton.styleFrom(
         foregroundColor: isSelected ? Colors.white : defaultColor,
         backgroundColor: isSelected ? blueColor : Colors.white,
-        side: BorderSide(color: isSelected? blueColor : defaultColor),
+        side: BorderSide(color: isSelected ? blueColor : defaultColor),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(25.0),
         ),
-        minimumSize: Size(70, 30),
+        minimumSize: Size(0, 30),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 2.0), // Adjust padding as needed
       ),
       child: Text(
         text,
@@ -92,3 +100,4 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
     );
   }
 }
+
