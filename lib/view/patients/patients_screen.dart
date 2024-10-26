@@ -124,7 +124,8 @@ class _PatientsScreenState extends State<PatientsScreen> {
                 padding: const EdgeInsets.all(16.0),
                 sliver: SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: ResponsiveHelper.isDesktop(context) ? 3 : 2, // 3 items per row
+                    crossAxisCount: ResponsiveHelper.isDesktop(context)
+                        ? 3 : ResponsiveHelper.isTablet(context) ? 2 : 1, // 3 items per row
                     crossAxisSpacing: 20.0,
                     mainAxisSpacing: 20.0,
                     childAspectRatio: 3, // Adjust as needed

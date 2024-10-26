@@ -89,12 +89,20 @@ class _LabTestTabState extends State<LabTestTab> {
                                 data.labTestData[index].title,
                                 style: interSemiBold.copyWith(color: textColor, fontSize: 20),
                               ),
-                              SizedBox(width: 24),
+                              const SizedBox(width: 24),
                               Text(
                                 data.labTestData[index].icon,
                                 style: interMedium.copyWith(color: iconColor, fontSize: 16),
                               ),
                               const Spacer(),
+
+                              InkWell(
+                                onTap: () {
+
+                                },
+                                child: SvgIcon(svgIcon: IconsM.delete)
+                              ),
+                              const SizedBox(width: 4,),
                               InkWell(
                                 onTap: () {
                                   showDialog(context: context,
@@ -103,7 +111,7 @@ class _LabTestTabState extends State<LabTestTab> {
                                 },
                                 child: SvgIcon(svgIcon: IconsM.edit)
                               ),
-                              SizedBox(width: 4,),
+                              const SizedBox(width: 4,),
                               SvgIcon(svgIcon: IconsM.arrowDown),
                             ],
                           ),
@@ -162,7 +170,7 @@ class _LabTestTabState extends State<LabTestTab> {
           // Default border (no border)
           focusedBorder: buildOutlineInputBorder(Colors.blue),
           // Border when focused
-          enabledBorder: buildOutlineInputBorder(Color(0XFF95DDFF)),
+          enabledBorder: buildOutlineInputBorder(const Color(0XFF95DDFF)),
           // Border when enabled
           errorBorder: buildOutlineInputBorder(Colors.red),
           // Border when error

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:simple_ehr/utils/app_context_extension.dart';
-import '../../../data/datasource/remote/response/status.dart';
 import '../../../helper/router_helper.dart';
+import '../../../provider/auth_provider.dart';
 import '../../../utils/constant.dart';
 import '../../../utils/dialogs.dart';
 import '../../../utils/dimensions.dart';
 import '../../../utils/images.dart';
 import '../../../utils/styles.dart';
 import '../../../utils/utils.dart';
-import '../../../view_model/login_vm.dart';
 import '../../../widget/default_button.dart';
 import '../../../widget/loading_widget.dart';
 import '../../../widget/my_error_widget.dart';
@@ -23,14 +23,19 @@ class SignInForm extends StatefulWidget {
 }
 
 class _SignInFormState extends State<SignInForm> {
-  final _formKey = GlobalKey<FormState>();
+  final FocusNode _emailNumberFocus = FocusNode();
+  final FocusNode _passwordFocus = FocusNode();
+  TextEditingController? _emailController;
+  TextEditingController? _passwordController;
+  GlobalKey<FormState>? _formKeyLogin;
+
   String? email;
   String? password;
   bool? remember = false;
   final List<String?> errors = [];
-  final LoginVM viewModel = LoginVM();
   bool isLoading = false;
   bool isError = false;
+  AuthProvider? authProvider;
 
   void addError({String? error}){
 
@@ -54,112 +59,104 @@ class _SignInFormState extends State<SignInForm> {
   }
   @override
   void initState() {
-    viewModel.addListener(() {
-      switch (viewModel.loginData.status) {
-        case Status.LOADING:
-
-          //LoadingWidget();
-          setState(() {
-            isLoading = true;
-          });
-          break;
-        case Status.ERROR:
-
-          setState(() {
-            isLoading = false;
-            isError = true;
-          });
-          //MyErrorWidget(viewModel.loginData.message ?? "NA");
-          break;
-        case Status.COMPLETED:
-          //Navigator.pushNamed(context, HomeScreen.id);
-         /* Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => HomeScreen()));*/
-          break;
-        default:
-      }
-    });
     super.initState();
+    _formKeyLogin = GlobalKey<FormState>();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    authProvider =  Provider.of<AuthProvider>(context, listen: false);
+    authProvider!.setIsLoading = false;
+  }
+  @override
+  void dispose() {
+    _emailController!.dispose();
+    _passwordController!.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              buildEmailFormField(),
-              SizedBox(height: 20),
-              buildPasswordFormField(),
-              //SizedBox(height: getProportionateScreenHeight(30)),
+    return Consumer<AuthProvider>(
+      builder: (context, authProvider, child) => Form(
+          key: _formKeyLogin,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                buildEmailFormField(),
+                const SizedBox(height: 20),
+                buildPasswordFormField(),
+                //SizedBox(height: getProportionateScreenHeight(30)),
 
-              //FormError(errors: errors),
-              SizedBox(height: 24),
-              DefaultButton(
-                  text: "Sign In",
-                  press: () {
-                    if(_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      Utils.hideKeyboard(context);
+                //FormError(errors: errors),
+                const SizedBox(height: 24),
+                !authProvider.isLoading ? DefaultButton(
+                    text: "Sign In",
+                    press: () async {
+                      if(_formKeyLogin!.currentState!.validate()) {
+                        _formKeyLogin!.currentState!.save();
+                        Utils.hideKeyboard(context);
 
-                      print("MARAJ $email");
-                      print("MARAJ $password");
-                      setState(() {
-                        isLoading = true;
-                      });
-                      //viewModel.login(email!, password!);
-                      RouterHelper.getMainRoute(action: RouteAction.pushNamedAndRemoveUntil);
+                        //viewModel.login(email!, password!);
+                        await authProvider.login(email, password).then((status) async {
+                          if(status.isSuccess) {
+                            RouterHelper.getMainRoute(action: RouteAction.pushNamedAndRemoveUntil);
+                          }else {
+                            Dialogs.showSnackBar(context, authProvider.loginErrorMessage!);
+                          }
+                        });
+                      }
+
                     }
-                    Dialogs.showSnackBar(context, errors[0]!);
-                  }
-              ),
-              const SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(child: Container(height: 1, color: const Color(0XFFE5E7EB))),
-                  const SizedBox(width: 20),
-                  const Text('or', style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: Dimensions.fontSizeLarge,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0XFF6B7280)
-                  )),
-                  const SizedBox(width: 20),
-                  Expanded(child: Container(height: 1, color: const Color(0XFFE5E7EB))),
+                ) : Center(
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+                    )),
+                const SizedBox(height: 24),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(child: Container(height: 1, color: const Color(0XFFE5E7EB))),
+                    const SizedBox(width: 20),
+                    const Text('or', style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: Dimensions.fontSizeLarge,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0XFF6B7280)
+                    )),
+                    const SizedBox(width: 20),
+                    Expanded(child: Container(height: 1, color: const Color(0XFFE5E7EB))),
 
-                ],
-              ),
-              const SizedBox(height: 24),
-              SocialIcon(
-                  icon: Images.google,
-                  text: 'Continue with Google',
-                  press: () {
+                  ],
+                ),
+                const SizedBox(height: 24),
+                SocialIcon(
+                    icon: Images.google,
+                    text: 'Continue with Google',
+                    press: () {
 
-                  }
-              ),
-              const SizedBox(height: 20),
-              SocialIcon(
-                  icon: Images.facebook,
-                  text: 'Continue with Facebook',
-                  press: () {
+                    }
+                ),
+                const SizedBox(height: 20),
+                SocialIcon(
+                    icon: Images.facebook,
+                    text: 'Continue with Facebook',
+                    press: () {
 
-                  }
-              ),
-              Visibility(
-                visible: isLoading,
-                  child: LoadingWidget()
-              ),
-              Visibility(
-                visible: isError,
-                  child: MyErrorWidget(viewModel.loginData.message ?? "NA")
-              )
+                    }
+                ),
+                Visibility(
+                    visible: isLoading,
+                    child: LoadingWidget()
+                ),
+                /*Visibility(
+                  visible: isError,
+                    child: MyErrorWidget(viewModel.loginData.message ?? "NA")
+                )*/
 
-            ],
-          ),
-        )
+              ],
+            ),
+          )
+      )
     );
   }
   TextFormField buildEmailFormField() {
@@ -170,8 +167,10 @@ class _SignInFormState extends State<SignInForm> {
       );
     }
     return TextFormField(
+      controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
+      cursorColor: primaryColor,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: mEmailNullError);
@@ -190,6 +189,9 @@ class _SignInFormState extends State<SignInForm> {
         }
         return null;
       },
+      style: const TextStyle(
+          color: textColor
+      ),
       decoration: InputDecoration(
         hintText: "Your Email",
         hintStyle: textHintStyle,
@@ -213,6 +215,8 @@ class _SignInFormState extends State<SignInForm> {
       );
     }
     return TextFormField(
+      controller: _passwordController,
+      cursorColor: primaryColor,
       obscureText: true,
       onSaved: (newValue) => password = newValue,
       onChanged: (value) {
@@ -233,6 +237,9 @@ class _SignInFormState extends State<SignInForm> {
         }
         return null;
       },
+      style: const TextStyle(
+        color: textColor
+      ),
       decoration: InputDecoration(
         hintText: "Password",
         hintStyle: textHintStyle,

@@ -34,7 +34,7 @@ class LineChartWidget extends StatelessWidget {
                 return chartData.bottomTitle[value.toInt()] != null
                     ? SideTitleWidget(
                   axisSide: meta.axisSide,
-                  child: Text(
+                    child: Text(
                       chartData.bottomTitle[value.toInt()].toString(),
                       style: TextStyle(
                           fontSize: 12, color: Colors.grey[400])),

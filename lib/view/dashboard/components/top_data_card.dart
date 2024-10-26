@@ -13,12 +13,13 @@ class TopDataCard extends StatelessWidget{
   final String percentage;
   final Color trendColor;
 
-  TopDataCard({super.key, required this.title, required this.value, required this.percentage, required this.trendColor});
+  const TopDataCard({super.key, required this.title, required this.value, required this.percentage, required this.trendColor});
 
 
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 8),
@@ -31,36 +32,7 @@ class TopDataCard extends StatelessWidget{
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            /*Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        color: textColor,
-                        fontWeight: interRegular.fontWeight,
-                      ),
-                    ),
-                    Text(
-                      value,
-                      style: TextStyle(
-                        fontSize: 28,
-                        color: textColor,
-                        fontWeight: interSemiBold.fontWeight,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: ResponsiveHelper.isDesktop(context) ? 80 : 30,
-                  height: ResponsiveHelper.isDesktop(context) ? 60 : 20,
-                  child: LineChartWidget(chartColor: trendColor, chartData: LineData()),
-                )
-              ],
-            ),*/
+
             Text(
               title,
               style: TextStyle(
@@ -88,9 +60,10 @@ class TopDataCard extends StatelessWidget{
                       percentage,
                       style: TextStyle(
                         color: trendColor,
-                        fontSize: 18,
+                        fontSize: !isMobile ? 18 : 12,
                         fontWeight: interMedium.fontWeight,
                       ),
+
                     ),
                   ],
                 ),

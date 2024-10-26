@@ -30,6 +30,7 @@ class IconsM {
   static const String arrowDown = 'assets/icons/arrow_down.svg';
   static const String crossClose = 'assets/icons/close.svg';
   static const String edit = 'assets/icons/edit.svg';
+  static const String delete = 'assets/icons/delete.svg';
   static const String add = 'assets/icons/add.svg';
   static const String doubleTick = 'assets/icons/double_tick.svg';
   static const String trash = 'assets/icons/trash.svg';
@@ -39,5 +40,7 @@ class IconsM {
   static const String highTag = 'assets/icons/high_tag.svg';
   static const String addRingGrey = 'assets/icons/add_ring_grey.svg';
   static const String addGrey = 'assets/icons/add_grey.svg';
+  static const String backIcon = 'assets/icons/back_icon.svg';
+  static const String cameraIcon = 'assets/icons/change_photo.svg';
 
 }

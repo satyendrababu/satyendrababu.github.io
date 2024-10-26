@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/patients/information/admission_information.dart';
+import 'package:simple_ehr/view/patients/information/emergency_contact.dart';
 import 'package:simple_ehr/view/patients/information/general_information.dart';
 import 'package:simple_ehr/view/patients/new_patient_enrollment.dart';
 
@@ -112,7 +113,7 @@ class _InformationScreenState extends State<InformationScreen> with TickerProvid
                   children: [
                     GeneralInformation(),
                     AdmissionInformation(),
-                    NewPatientEnrollment(),
+                    EmergencyContact(),
                     Container(
                       child: Text('history'),
                     )

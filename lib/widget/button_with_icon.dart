@@ -4,6 +4,8 @@ import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/widget/svg_icon.dart';
 
+import '../helper/responsive_helper.dart';
+
 class ButtonWithIcon extends StatelessWidget {
   final String icon;
   final String text;
@@ -13,6 +15,7 @@ class ButtonWithIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
     return GestureDetector(
       onTap: () => press as void Function()?,
       child: Container(
@@ -43,10 +46,13 @@ class ButtonWithIcon extends StatelessWidget {
             SvgIcon(
               svgIcon: icon,
             ),
-            Visibility(visible : icon != '',child: SizedBox(width: 8)),
-            Text(
-              text,
-              style: interMedium.copyWith(fontSize: 16, color: Colors.white),
+            Visibility(visible : icon != '' && !isMobile, child: SizedBox(width: 8)),
+            Visibility(
+              visible: !isMobile,
+              child: Text(
+                text,
+                style: interMedium.copyWith(fontSize: 16, color: Colors.white),
+              ),
             ),
           ],
         ),

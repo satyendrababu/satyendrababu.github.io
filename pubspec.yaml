@@ -46,8 +46,10 @@ dependencies:
   flutter_svg: ^2.0.9
   form_field_validator: ^1.1.0
   go_router: ^14.2.8
+  url_strategy: ^0.2.0 #For removing the # from url
   dotted_border: ^2.1.0
   connectivity_plus: ^4.0.0
+  pin_code_fields: ^8.0.0
 
 dev_dependencies:
   flutter_test:

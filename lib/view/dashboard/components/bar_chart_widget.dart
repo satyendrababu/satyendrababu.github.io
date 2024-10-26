@@ -29,7 +29,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
         BarChartData(
           barGroups: _chartGroups(points: widget.chartData.data, color: widget.chartColor),
           borderData: FlBorderData(border: const Border()),
-          gridData: FlGridData(show: false),
+          gridData: const FlGridData(show: false),
           titlesData: FlTitlesData(
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(
@@ -37,7 +37,7 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                 getTitlesWidget: (value, meta) {
                   final isTouched = touchedIndex == value.toInt();
                   return Padding(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.only(top: 5),
                     child: Text(
                       widget.chartData.bottomLabel[value.toInt()],
                       style: TextStyle(
@@ -49,13 +49,13 @@ class _BarChartWidgetState extends State<BarChartWidget> {
                 }
               )
             ),
-            leftTitles: AxisTitles(
+            leftTitles: const AxisTitles(
               sideTitles: SideTitles(showTitles: false),
             ),
-            topTitles: AxisTitles(
+            topTitles: const AxisTitles(
               sideTitles: SideTitles(showTitles: false),
             ),
-            rightTitles: AxisTitles(
+            rightTitles: const AxisTitles(
               sideTitles: SideTitles(showTitles: false),
             ),
           ),

@@ -6,10 +6,12 @@ import 'package:simple_ehr/utils/styles.dart';
 import 'package:simple_ehr/view/base/custom_box_shadow.dart';
 import 'package:simple_ehr/view/dashboard/components/bar_chart_widget.dart';
 import 'package:simple_ehr/view/dashboard/components/pie_chart_widget.dart';
+import 'package:simple_ehr/view/dashboard/components/responsive_pie_charts.dart';
 import 'package:simple_ehr/view/dashboard/components/top_data_card.dart';
 
 import '../../data/local/bar_data.dart';
 import 'components/patient_request_card.dart';
+import 'components/responsive_top_data_card.dart';
 
 class DashboardScreen extends StatelessWidget {
 
@@ -20,13 +22,15 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = ResponsiveHelper.isMobile(context);
+
     return SingleChildScrollView(
-      padding: ResponsiveHelper.isDesktop(context) ? EdgeInsets.fromLTRB(0,16,16,16) : EdgeInsets.fromLTRB(8,16,16,16),
+      padding: ResponsiveHelper.isDesktop(context) ? const EdgeInsets.fromLTRB(0,16,16,16) : const EdgeInsets.fromLTRB(8,16,16,16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               'Dashboard',
               style: TextStyle(
@@ -36,23 +40,13 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TopDataCard(title: 'Positive Response', value: '200', percentage: '+2,5%', trendColor: greenColor),
+          const ResponsiveTopDataCard(),
 
-              TopDataCard(title: 'Pending Reports', value: '872', percentage: '-4,4%', trendColor: redColor),
-
-              TopDataCard(title: 'New Patients', value: '475', percentage: '+2,5%', trendColor: blueColor),
-
-              TopDataCard(title: 'Positive Cases', value: '200', percentage: '+2,5%', trendColor: orangeColor),
-
-            ],
-          ),
           const SizedBox(height: 32),
-          Row(
+          const ResponsivePieCharts(),
+          /*Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
@@ -89,6 +83,7 @@ class DashboardScreen extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 8),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -110,7 +105,7 @@ class DashboardScreen extends StatelessWidget {
                                     color: textColor
                                   ),
                                 ),
-                                SizedBox(height: 8,),
+                                const SizedBox(height: 8,),
                                 Text(
                                   'Than last week',
                                   style: TextStyle(
@@ -121,21 +116,22 @@ class DashboardScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox()
+                            const SizedBox()
                           ],
                         ),
+
                         const SizedBox(height: 16),
                         Container(
                           height: 235,
 
                             child: BarChartWidget(chartColor: barColor, chartData: BarData()),
                             //child: PatientBarChart.withSampleData()// Bar chart height
-                          /*child: BarChart(
+                          *//*child: BarChart(
                             // Replace with actual data
                             BarChartData(
                               // Chart styling and data here
                             ),
-                          ),*/
+                          ),*//*
                         ),
                       ],
                     ),
@@ -181,24 +177,24 @@ class DashboardScreen extends StatelessWidget {
                         Container(
                           height: 320,
 
-                          child: PieChartWidget(),
+                          child: const PieChartWidget(),
                           // Pie chart height
-                          /*child: PieChart(
+                          *//*child: PieChart(
                             // Replace with actual data
                             PieChartData(
                               // Pie chart styling and data here
                             ),
-                          ),*/
+                          ),*//*
                         ),
                       ],
                     ),
                   )
               )
             ],
-          ),
+          )*/
           const SizedBox(height: 16),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               'Patient Requests',
               style: TextStyle(
@@ -210,7 +206,7 @@ class DashboardScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 8),
+            margin: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
               'Eum fuga consequuntur ut et.',
               style: TextStyle(
