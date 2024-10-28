@@ -6,6 +6,7 @@ import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/view/sign_in/component/sign_in_form.dart';
 
 import '../../../helper/responsive_helper.dart';
+import '../../../helper/router_helper.dart';
 import '../../../utils/images.dart';
 
 import '../../../utils/styles.dart';
@@ -35,30 +36,32 @@ class SignInBody extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: 70),
+                    const SizedBox(height: 70),
                     SvgPicture.asset(IconsM.bigLogo),
-                    SizedBox(height: 32),
+                    const SizedBox(height: 32),
                     Text(
                       "Hi, Welcome Back!",
                       style: TextStyle(
                         fontWeight: interSemiBold.fontWeight,
                         fontSize: 36,
-                        color: Color(0XFF1C2A3A)
+                        color: const Color(0XFF1C2A3A)
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     const Text(
                       "Hope you are doing fine.",
                       style: interRegular,
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 24),
+                    const SizedBox(height: 24),
                     SignInForm(),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     GestureDetector(
                       onTap: () {
                         //Navigator.pushNamed(context, ForgetPasswordScreen.id);
+                        RouterHelper.getForgetPasswordRoute(action: RouteAction.push);
+
                       },
                       child: const Padding(
                         padding: EdgeInsets.all(8.0),
@@ -68,7 +71,7 @@ class SignInBody extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     const NoAccountText(),
                   ],
                 ),

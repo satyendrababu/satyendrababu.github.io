@@ -98,6 +98,7 @@ class _SignInFormState extends State<SignInForm> {
 
                         //viewModel.login(email!, password!);
                         await authProvider.login(email, password).then((status) async {
+                          print('kya $status');
                           if(status.isSuccess) {
                             RouterHelper.getMainRoute(action: RouteAction.pushNamedAndRemoveUntil);
                           }else {
@@ -148,10 +149,7 @@ class _SignInFormState extends State<SignInForm> {
                     visible: isLoading,
                     child: LoadingWidget()
                 ),
-                /*Visibility(
-                  visible: isError,
-                    child: MyErrorWidget(viewModel.loginData.message ?? "NA")
-                )*/
+
 
               ],
             ),

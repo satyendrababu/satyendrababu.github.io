@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/widget/svg_icon.dart';
 
+import '../../helper/router_helper.dart';
 import '../../utils/constant.dart';
 import '../../utils/styles.dart';
 import 'custom_box_shadow.dart';
@@ -91,19 +92,24 @@ class WebAppBar extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 8),
-                          Container(
-                            margin: EdgeInsets.only(right: 16),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: primaryColor, // Border color
-                                width: 2,                 // Border width
+                          GestureDetector(
+                            onTap: () {
+                              RouterHelper.getProfileRoute(action: RouteAction.push);
+
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 16),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: primaryColor, // Border color
+                                  width: 2,                 // Border width
+                                ),
                               ),
-                            ),
-                            child: const CircleAvatar(
-                              radius: 28, // Radius of the CircleAvatar
-                              backgroundImage: NetworkImage(
-                                  'https://s3-alpha-sig.figma.com/img/ab2f/238c/ac2c180c370d6398ba04e784c6dc5cb3?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LTmmgCMZrHNSBZJWLCaQlmAlyuPvzAf3BqntcNi6EftKZQOj56-LvZBN9-nmFDV5hWnbE~rsMD0DcuqvHXpOPX6bvIDixAB8sdw7QNVKjU4C5Hokykl7zBkMHcWIbQllM3oi3edj5zp7PVO3uV4uaNX-Q4IG0Gj9rbJVpo0-LyQpsLmTKZECznBMJrCzqDSA3LHc17QEXcd7HEOEhrnNY0T4OGlFod9411wo2DUj5RoJnSdwWJcekMZS22pm40ZOOOzWnjIuqFkMoktq7MA2FrvgaC-VNgU-EVM2~lBS2WloJxvzLHt~mFBqdafVItvTzES6i201oj4WqsdHmKCBxA__'), // Replace with your image URL or asset
+                              child: const CircleAvatar(
+                                radius: 28, // Radius of the CircleAvatar
+                                backgroundImage: AssetImage(
+                                    'assets/images/girl.png'),),
                             ),
                           ),
                         ],

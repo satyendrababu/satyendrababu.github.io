@@ -41,7 +41,7 @@ class ResponsiveHelper {
 
 
   // Generic method to get padding based on device and orientation
-  static EdgeInsets getResponsivePadding(BuildContext context) {
+  /*static EdgeInsets getResponsivePadding(BuildContext context) {
     if (isWeb()) {
       return const EdgeInsets.symmetric(horizontal: 400, vertical: 30);
 
@@ -49,6 +49,31 @@ class ResponsiveHelper {
       return isPortrait(context)
           ? const EdgeInsets.symmetric(horizontal: 40, vertical: 10)
           : const EdgeInsets.symmetric(horizontal: 200, vertical: 8);
+    }
+  }*/
+  static EdgeInsets getResponsivePadding(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    if (isWeb()) {
+      // Adjust padding based on web screen size
+      return EdgeInsets.symmetric(
+        horizontal: width * 0.2, // Adjust as needed for large web screens
+        vertical: height * 0.03,
+      );
+    } else {
+      // For mobile screens, adapt based on orientation
+      if (isPortrait(context)) {
+        return EdgeInsets.symmetric(
+          horizontal: width * 0.1, // For small horizontal padding on portrait
+          vertical: height * 0.02,
+        );
+      } else {
+        return EdgeInsets.symmetric(
+          horizontal: width * 0.3, // For larger horizontal padding on landscape
+          vertical: height * 0.015,
+        );
+      }
     }
   }
 

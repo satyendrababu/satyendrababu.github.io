@@ -43,7 +43,7 @@ class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
                       borderRadius: BorderRadius.circular(16)
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: RichText(
                         text: TextSpan(
                           text: 'MRN:',
@@ -85,17 +85,17 @@ class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
   Widget buildEnrollmentForm(){
     return Column(
       children: [
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         Row(
           children: [
             Flexible(child: CustomTextField(label: 'Patient First Name')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Patient Last Name')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Date of Birth')),
           ],
         ),
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         Row(
           children: [
             Flexible(child:  CustomDropdownMenu(
@@ -104,13 +104,13 @@ class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
               options:['','Single', 'Married', 'Divorced', 'Widowed'],
             ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Height (inches)')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Weight (Pounds)')),
           ],
         ),
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         Row(
           children: [
             Flexible(child:  CustomDropdownMenu(
@@ -119,33 +119,33 @@ class _NewPatientEnrollmentState extends State<NewPatientEnrollment> {
               options:['','Single', 'Married', 'Divorced', 'Widowed'],
             ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Contact Number')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Email Address')),
           ],
         ),
 
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         Row(
           children: [
 
             Flexible(child: CustomTextField(label: 'Address Line1')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Address Line2')),
           ],
         ),
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         Row(
           children: [
             Flexible(child: CustomTextField(label: 'State')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'Postal/Zip Code')),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Flexible(child: CustomTextField(label: 'City')),
           ],
         ),
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         Row(
           children: [
             Flexible(child: CustomTextField(label: 'Taking medications', maxLines: 12,)),

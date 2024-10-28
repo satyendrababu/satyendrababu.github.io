@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
 import 'package:simple_ehr/widget/svg_icon.dart';
 
+import '../../helper/router_helper.dart';
 import '../../utils/constant.dart';
 import '../../utils/styles.dart';
 import 'custom_box_shadow.dart';
@@ -62,19 +63,24 @@ class TabAppBar extends StatelessWidget {
                             ),
                           ),
                           SizedBox(width: 8),
-                          Container(
-                            margin: EdgeInsets.only(right: 16),
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: primaryColor, // Border color
-                                width: 2,                 // Border width
+                          GestureDetector(
+                            onTap: () {
+                              RouterHelper.getProfileRoute(action: RouteAction.push);
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 16),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: primaryColor, // Border color
+                                  width: 2,                 // Border width
+                                ),
                               ),
-                            ),
-                            child: const CircleAvatar(
-                              radius: 28, // Radius of the CircleAvatar
-                              backgroundImage: NetworkImage(
-                                  'https://s3-alpha-sig.figma.com/img/ab2f/238c/ac2c180c370d6398ba04e784c6dc5cb3?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PACHJnkMKosZqdz1qvf2nlROtFmZoVnpVRnmXB4XOq-4vnR72namjBn833o7rnJe2WRCvEEk7pdCX54Odec5jZ-r21FAUwTyRD30HutsCtSS6XsEc~YJ0To~rJxwM~XCjAHw6oMzuMYfatXh-bnB3eG~2FM1ypay~7~SgeQ39x8PO34LTtbvSUNvyZHH2nRu2PFiFRa2SnWv4ycd2Zo7y3nV-iZydKqGAF2EnvLmltq2T0RQcHLkfJLe2wIJyt0ocBnIsFzzcM92ayg1u8HLXLas2E7U5l6gUMCJqz7AH3aQMB9yFaAbta3n1QYRBDAdkYQOTp4nCsM-Wwe1PJ8s2A__'), // Replace with your image URL or asset
+                              child: const CircleAvatar(
+                                radius: 28, // Radius of the CircleAvatar
+                                backgroundImage: AssetImage(
+                                    'assets/images/girl.png'), // Replace with your image URL or asset
+                              ),
                             ),
                           ),
                           InkWell(

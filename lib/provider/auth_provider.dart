@@ -33,10 +33,10 @@ class AuthProvider with ChangeNotifier {
 
       LoginResponse loginResponse = LoginResponse.fromJson(apiResponse.response!.data);
 
-      if (loginResponse.data != null && loginResponse.data!.isNotEmpty) {
+      if (loginResponse.data != null) {
 
-        accessToken = loginResponse.data!.first.accessToken;
-        refreshToken = loginResponse.data!.first.refreshToken;
+        accessToken = loginResponse.data!.accessToken;
+        refreshToken = loginResponse.data!.refreshToken;
 
         // Do something with tokens if necessary
         debugPrint('Access Token: $accessToken');
