@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:simple_ehr/utils/icons_m.dart';
+import 'package:simple_ehr/view/profile/profile_dialog.dart';
 import 'package:simple_ehr/widget/svg_icon.dart';
 
 import '../../helper/router_helper.dart';
@@ -65,7 +66,9 @@ class TabAppBar extends StatelessWidget {
                           SizedBox(width: 8),
                           GestureDetector(
                             onTap: () {
-                              RouterHelper.getProfileRoute(action: RouteAction.push);
+                              showDialog(context: context,
+                                  builder: (context) => const ProfileDialog()
+                              );
                             },
                             child: Container(
                               margin: EdgeInsets.only(right: 16),

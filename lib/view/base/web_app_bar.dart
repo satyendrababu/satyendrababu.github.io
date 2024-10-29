@@ -6,6 +6,8 @@ import 'package:simple_ehr/widget/svg_icon.dart';
 import '../../helper/router_helper.dart';
 import '../../utils/constant.dart';
 import '../../utils/styles.dart';
+import '../profile/profile_dialog.dart';
+import '../profile/profile_options_dialog.dart';
 import 'custom_box_shadow.dart';
 
 class WebAppBar extends StatelessWidget {
@@ -94,8 +96,9 @@ class WebAppBar extends StatelessWidget {
                           SizedBox(width: 8),
                           GestureDetector(
                             onTap: () {
-                              RouterHelper.getProfileRoute(action: RouteAction.push);
-
+                              showDialog(context: context,
+                                  builder: (context) => const ProfileOptionsDialog()
+                              );
                             },
                             child: Container(
                               margin: EdgeInsets.only(right: 16),

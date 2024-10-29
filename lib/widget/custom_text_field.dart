@@ -8,6 +8,7 @@ class CustomTextField extends StatefulWidget {
   final String? initialValue;
   final String? errorText;
   final bool isPassword;
+  final bool isDisable;
   final int? maxLines;
   final TextEditingController? controller;
   final ValueChanged<String>? onChanged;
@@ -19,6 +20,7 @@ class CustomTextField extends StatefulWidget {
     this.initialValue,
     this.errorText,
     this.isPassword = false,
+    this.isDisable = false,
     this.controller,
     this.onChanged,
     this.maxLines = 1
@@ -65,9 +67,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
           padding: const EdgeInsets.fromLTRB(16, 5, 16, 5),
           child: TextFormField(
             maxLines: widget.maxLines,
+            enabled: !widget.isDisable ,
             controller: effectiveController,
             cursorColor: blueColor,
-            obscureText: widget.isPassword,
+            obscureText: _isObscured,
             decoration: InputDecoration(
                 hintText: widget.isPassword ? '* * * * * *' : widget.hintText,
                 hintStyle: interMedium.copyWith(
@@ -98,7 +101,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
             child: Text(
               widget.label,
-              style: interMedium.copyWith(color: blueColor, fontSize: 14),
+              style: interMedium.copyWith(color: widget.isDisable ? const Color(0XFFA2A7AE) : blueColor, fontSize: 14),
             ),
           ),
         ),

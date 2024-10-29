@@ -10,12 +10,16 @@ class CustomDropdownMenu extends StatefulWidget {
 
   final Function(String) onSelectionChanged; // Callback function
   final String label; // Label for the dropdown
-  final List<String> options; // Dropdown options
+  final List<String> options;
+  final bool isDisable;
+  final String? initialSelectedItem;
 
   CustomDropdownMenu({
     required this.onSelectionChanged,
     required this.label,
     required this.options,
+    this.isDisable = false,
+    this.initialSelectedItem
   });
 
 
@@ -29,7 +33,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
   @override
   void initState() {
     super.initState();
-    selectedItem = widget.options[0]; // Default selected item
+    selectedItem = widget.initialSelectedItem ?? widget.options[0];// Default selected item
   }
 
   @override
@@ -52,15 +56,18 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
             child: DropdownButtonHideUnderline(
               child: DropdownButton<String>(
                 value: selectedItem,
-                icon: SvgSuffixIcon(svgIcon: IconsM.arrowDown),
+                icon: const SvgSuffixIcon(svgIcon: IconsM.arrowDown),
                 elevation: 16,
                 style: interMedium.copyWith(color: textColor, fontSize: 16),
                 dropdownColor: Colors.white,
                 borderRadius: BorderRadius.circular(10),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    selectedItem = newValue!;
-                  });
+                onChanged: widget.isDisable
+                      ? null
+                      :(String? newValue) {
+                        setState(() {
+                        selectedItem = newValue!;
+                      });
+                      widget.onSelectionChanged(newValue!);
                 },
                 items: widget.options
                     .map<DropdownMenuItem<String>>((String value) {
@@ -83,7 +90,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 3),
             child: Text(
               widget.label,
-              style: interMedium.copyWith(color: blueColor, fontSize: 14),
+              style: interMedium.copyWith(color: widget.isDisable ? const Color(0XFFA2A7AE) : blueColor, fontSize: 14),
             ),
           ),
         ),

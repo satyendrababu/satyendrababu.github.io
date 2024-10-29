@@ -43,4 +43,8 @@ class IconsM {
   static const String backIcon = 'assets/icons/back_icon.svg';
   static const String cameraIcon = 'assets/icons/change_photo.svg';
 
+  static const String userBlack = 'assets/icons/user_black.svg';
+  static const String lockBlack = 'assets/icons/lock_black.svg';
+  static const String logoutBlack = 'assets/icons/log_out.svg';
+
 }

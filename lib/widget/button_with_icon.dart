@@ -16,10 +16,11 @@ class ButtonWithIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isMobile = ResponsiveHelper.isMobile(context);
-    return GestureDetector(
+    return InkWell(
       onTap: () => press as void Function()?,
+
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(// Button color
           borderRadius: BorderRadius.circular(16),
           gradient: LinearGradient(
@@ -35,7 +36,7 @@ class ButtonWithIcon extends StatelessWidget {
               color: primaryColor.withOpacity(0.4), // Shadow color
               spreadRadius: 2,
               blurRadius: 15,
-              offset: Offset(0, 8), // Position of shadow
+              offset: const Offset(0, 8), // Position of shadow
             ),
           ],
         ),
@@ -46,7 +47,7 @@ class ButtonWithIcon extends StatelessWidget {
             SvgIcon(
               svgIcon: icon,
             ),
-            Visibility(visible : icon != '' && !isMobile, child: SizedBox(width: 8)),
+            Visibility(visible : icon != '' && !isMobile, child: const SizedBox(width: 8)),
             Visibility(
               visible: !isMobile,
               child: Text(

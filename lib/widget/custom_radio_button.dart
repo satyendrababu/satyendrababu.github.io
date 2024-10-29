@@ -7,12 +7,14 @@ class CustomRadioButton extends StatefulWidget {
   final String label;
   final List<String> options; // Options for radio buttons
   final Function(String) onSelectionChanged; // Callback function
+  final String? initialSelectedItem;
 
 
   CustomRadioButton({
     required this.label,
     required this.options,
     required this.onSelectionChanged,
+    this.initialSelectedItem
   });
 
   @override
@@ -21,6 +23,17 @@ class CustomRadioButton extends StatefulWidget {
 
 class _CustomRadioButtonState extends State<CustomRadioButton> {
   int selectedIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.initialSelectedItem != null) {
+      //selectedIndex = widget.options.indexOf(widget.initialSelectedItem!);
+      selectedIndex = widget.options.indexWhere(
+            (option) => option.toLowerCase() == widget.initialSelectedItem!.toLowerCase(),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +92,7 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
         setState(() {
           selectedIndex = index;
           widget.onSelectionChanged(widget.options[selectedIndex]);
+          debugPrint('Selected option: ${widget.options[selectedIndex]}');
         });
       },
       style: ElevatedButton.styleFrom(

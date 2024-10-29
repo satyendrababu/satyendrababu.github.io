@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'images.dart';
 
 class Utils {
+
+  static String capitalize(String? text) {
+    if (text == null || text.isEmpty) return '';
+    return text[0].toUpperCase() + text.substring(1).toLowerCase();
+  }
+
   static double setAverageRating(List<int> ratings) {
     var avgRating = 0;
     for (int i = 0; i < ratings.length; i++) {

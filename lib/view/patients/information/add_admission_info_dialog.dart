@@ -39,7 +39,7 @@ class _AddAdmissionInfoDialogState extends State<AddAdmissionInfoDialog> {
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Container(
+          child: SizedBox(
             width: screenSize.width * 0.6,  // 80% of screen width
 
             child: Column(
