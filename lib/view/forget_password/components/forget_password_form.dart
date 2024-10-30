@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:simple_ehr/provider/auth_provider.dart';
 import 'package:simple_ehr/utils/app_context_extension.dart';
 
 import '../../../helper/router_helper.dart';
@@ -19,99 +21,80 @@ class ForgetPasswordForm extends StatefulWidget {
 }
 
 class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
-
   final _formKey = GlobalKey<FormState>();
+
   String? email;
 
-  final List<String?> errors = [];
-
-  bool isLoading = false;
-  bool isError = false;
-
-  void addError({String? error}){
-
-
-
-
-
-    if(!errors.contains(error)){
-      setState(() {
-        errors.add(error);
-      });
-    }
-  }
-
-  void removeError({String? error}){
-    if(errors.contains(error)){
-      setState(() {
-        errors.remove(error);
-      });
-    }
-  }
   @override
   void initState() {
-
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            buildEmailFormField(),
+    return Consumer<AuthProvider>(builder: (context, authProvider, child) {
+      return Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              buildEmailFormField(),
+              const SizedBox(height: 32),
+              !authProvider.isLoading
+                  ? DefaultButton(
+                      text: "Send Code",
+                      press: () async {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          Utils.hideKeyboard(context);
+                          await authProvider.forgetPassword(email).then((status) {
+                            if(status.isSuccess){
+                              RouterHelper.getVerifyCodeRoute(action: RouteAction.push);
+                              Dialogs.showSnackBar(context, 'Password has been changed successfully',isError: false);
 
-            SizedBox(height: 32),
-            DefaultButton(
-                text: "Send Code",
-                press: () {
-                  if(_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    Utils.hideKeyboard(context);
+                            }else {
+                              Dialogs.showSnackBar(context, 'Something went wrong');
+                            }
+                          });
 
-                    print("MARAJ $email");
-                    setState(() {
-                      isLoading = true;
-                    });
-                    //viewModel.login(email!, password!);
-                  }
-                  RouterHelper.getVerifyCodeRoute(action: RouteAction.push);
-                  Dialogs.showSnackBar(context, errors[0]!);
-                }
-            ),
+                        }
 
-
-          ],
-        )
-    );
+                      })
+                  : Center(
+                      child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          Theme.of(context).primaryColor),
+                    )),
+            ],
+          ));
+    });
   }
 
   TextFormField buildEmailFormField() {
-    OutlineInputBorder buildOutlineInputBorder(Color borderColor, {double borderWidth = 1.0}) {
+    OutlineInputBorder buildOutlineInputBorder(Color borderColor,
+        {double borderWidth = 1.0}) {
       return OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: BorderSide(color: borderColor, width: borderWidth),
       );
     }
+
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          removeError(error: mEmailNullError);
+          Dialogs.showSnackBar(context, mEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: mInvalidEmailError);
+          Dialogs.showSnackBar(context, mInvalidEmailError);
         }
         return;
       },
       validator: (value) {
         if (value!.isEmpty) {
-          addError(error: mEmailNullError);
+          Dialogs.showSnackBar(context, mEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
-          addError(error: mInvalidEmailError);
+          Dialogs.showSnackBar(context, mInvalidEmailError);
           return "";
         }
         return null;
@@ -119,14 +102,22 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
       decoration: InputDecoration(
         hintText: "Your Email",
         hintStyle: textHintStyle,
-        contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-        border: buildOutlineInputBorder(Colors.transparent), // Default border (no border)
-        focusedBorder: buildOutlineInputBorder(Colors.blue), // Border when focused
-        enabledBorder: buildOutlineInputBorder(context.resources.color.colorTextFieldBorder), // Border when enabled
-        errorBorder: buildOutlineInputBorder(Colors.red), // Border when error
-        focusedErrorBorder: buildOutlineInputBorder(Colors.red), // Border when focused with error
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+        border: buildOutlineInputBorder(Colors.transparent),
+        // Default border (no border)
+        focusedBorder: buildOutlineInputBorder(Colors.blue),
+        // Border when focused
+        enabledBorder: buildOutlineInputBorder(
+            context.resources.color.colorTextFieldBorder),
+        // Border when enabled
+        errorBorder: buildOutlineInputBorder(Colors.red),
+        // Border when error
+        focusedErrorBorder: buildOutlineInputBorder(Colors.red),
+        // Border when focused with error
         filled: true,
-        fillColor: context.resources.color.colorTextFieldFill, // Background color of the TextFormField
+        fillColor: context.resources.color.colorTextFieldFill,
+        // Background color of the TextFormField
         prefixIcon: const SvgSuffixIcon(svgIcon: Images.email),
       ),
     );

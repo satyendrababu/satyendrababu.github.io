@@ -28,10 +28,8 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
   void initState() {
     super.initState();
     if (widget.initialSelectedItem != null) {
-      //selectedIndex = widget.options.indexOf(widget.initialSelectedItem!);
-      selectedIndex = widget.options.indexWhere(
-            (option) => option.toLowerCase() == widget.initialSelectedItem!.toLowerCase(),
-      );
+      selectedIndex = widget.options.indexOf(widget.initialSelectedItem!);
+      debugPrint('Selected Index.........$selectedIndex');
     }
   }
 

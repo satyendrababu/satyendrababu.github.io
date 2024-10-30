@@ -65,6 +65,18 @@ class AuthRepo {
     return sharedPreferences!.containsKey(AppConstants.token);
   }
 
-
+  Future<ApiResponse> forgetPassword({String? email}) async {
+    try {
+      Response response = await dioClient!.makePostRequest(
+          ApiEndPoints.login,
+          data: {"email": email},
+          isFormData: true
+      );
+      debugPrint('Response--> $response');
+      return ApiResponse.withSuccess(response);
+    }catch (e) {
+      return ApiResponse.withError(ApiErrorHandler.getMessage(e));
+    }
+  }
 
 }

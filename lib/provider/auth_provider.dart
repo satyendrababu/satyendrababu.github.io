@@ -59,5 +59,24 @@ class AuthProvider with ChangeNotifier {
     return authRepo!.isLoggedIn();
   }
 
+  Future<ResponseModel> forgetPassword(String? email) async {
+    _isLoading = true;
+    _loginErrorMessage = '';
+    notifyListeners();
+    ApiResponse apiResponse = await authRepo!.forgetPassword(email: email);
+    ResponseModel responseModel;
+
+    if(apiResponse.response != null && apiResponse.response!.statusCode == 200) {
+
+      responseModel = ResponseModel(apiResponse.response != null, 'verification');
+
+    } else {
+      _loginErrorMessage = ApiChecker.getError(apiResponse).errors![0].message;
+      responseModel = ResponseModel(false, _loginErrorMessage);
+    }
+    _isLoading = false;
+    notifyListeners();
+    return responseModel;
+  }
 
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_ehr/utils/constant.dart';
 import 'package:simple_ehr/utils/styles.dart';
 
+import '../utils/dialogs.dart';
+
 class CustomTextField extends StatefulWidget {
   final String label;
   final String? hintText;
@@ -87,7 +89,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     : null
             ),
             style: interMedium.copyWith(color: textColor, fontSize: 16),
-
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                Dialogs.showSnackBar(context, 'Value should not be empty');
+              }
+              return;
+            },
           ),
         ),
         Positioned(
